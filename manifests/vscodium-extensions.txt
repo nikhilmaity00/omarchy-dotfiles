@@ -1,0 +1,9 @@
+catppuccin.catppuccin-vsc
+eamodio.gitlens
+hashicorp.terraform
+humao.rest-client
+local.omarchy-theme
+ms-azuretools.vscode-containers
+ms-azuretools.vscode-docker
+ms-kubernetes-tools.vscode-kubernetes-tools
+redhat.vscode-yaml

@@ -48,6 +48,23 @@ if [[ -f "$MANIFESTS_DIR/flatpak.txt" ]] && command -v flatpak &> /dev/null; the
     done
 fi
 
+# 5b. Restore Editor Extensions (VSCodium / VS Code)
+if [[ -f "$MANIFESTS_DIR/vscodium-extensions.txt" ]]; then
+    EDITOR_CMD=""
+    if command -v codium &> /dev/null; then EDITOR_CMD="codium";
+    elif command -v code &> /dev/null; then EDITOR_CMD="code";
+    elif command -v vscodium &> /dev/null; then EDITOR_CMD="vscodium"; fi
+
+    if [[ -n "$EDITOR_CMD" ]]; then
+        echo "==> Restoring editor extensions using $EDITOR_CMD..."
+        grep -v '^#' "$MANIFESTS_DIR/vscodium-extensions.txt" | grep -v '^$' | while read -r ext; do
+            if [ -n "$ext" ]; then
+                $EDITOR_CMD --install-extension "$ext" --force || true
+            fi
+        done
+    fi
+fi
+
 # 6. Hardware Abstraction: Auto-configure Hyprland Monitor Output
 echo "==> Configuring laptop display output..."
 mkdir -p "$HOME/.config/hypr"
