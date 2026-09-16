@@ -65,6 +65,17 @@ if [[ -f "$MANIFESTS_DIR/vscodium-extensions.txt" ]]; then
     fi
 fi
 
+# 5c. Restore Omarchy Third-Party Shell Plugins & Bar Widgets
+if [[ -f "$MANIFESTS_DIR/omarchy-plugins.txt" ]] && command -v omarchy &> /dev/null; then
+    echo "==> Restoring Omarchy plugins..."
+    while IFS=$'\t' read -r plugin_id git_url; do
+        if [[ -n "$git_url" && "$git_url" != "#"* ]]; then
+            echo "Installing plugin: $plugin_id from $git_url"
+            omarchy plugin add "$git_url" --enable --yes || true
+        fi
+    done < "$MANIFESTS_DIR/omarchy-plugins.txt"
+fi
+
 # 6. Hardware Abstraction: Auto-configure Hyprland Monitor Output
 echo "==> Configuring laptop display output..."
 mkdir -p "$HOME/.config/hypr"
@@ -84,7 +95,14 @@ if [[ ! -f "$MONITOR_CONF" ]]; then
     fi
 fi
 
-# 7. Apply Chezmoi Dotfiles (if setup)
+# 7. Restore Hyprland Custom Keybindings
+if [[ -f "$SCRIPT_DIR/config/hypr/bindings.lua" ]]; then
+    echo "==> Restoring Hyprland custom keybindings (bindings.lua)..."
+    mkdir -p "$HOME/.config/hypr"
+    cp -f "$SCRIPT_DIR/config/hypr/bindings.lua" "$HOME/.config/hypr/bindings.lua"
+fi
+
+# 8. Apply Chezmoi Dotfiles (if setup)
 if command -v chezmoi &> /dev/null && [[ -d "$HOME/.local/share/chezmoi" ]]; then
     echo "==> Applying Chezmoi dotfiles..."
     chezmoi apply
