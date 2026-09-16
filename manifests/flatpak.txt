@@ -1,0 +1,1 @@
+# Add flatpak app IDs here if needed (e.g. com.spotify.Client)

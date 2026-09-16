@@ -1,0 +1,6 @@
+ai-usagebar-bin
+google-chrome
+microsoft-edge-stable-bin
+sonora-bin
+stirling-pdf-desktop
+vscodium-bin

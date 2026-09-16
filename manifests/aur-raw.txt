@@ -1,0 +1,6 @@
+ai-usagebar-bin 1.17.0-1
+google-chrome 153.0.8010.36-1
+microsoft-edge-stable-bin 152.0.4191.66-1
+sonora-bin 0.35.0-1
+stirling-pdf-desktop 2.14.0-1
+vscodium-bin 1.135.06055-1
