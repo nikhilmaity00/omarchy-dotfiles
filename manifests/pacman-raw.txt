@@ -1,4 +1,4 @@
-aether 4.29.8-1
+aether 4.30.0-1
 alsa-utils 1.2.16-1
 asdcontrol 1:0.6.0-2
 base 3-3
@@ -8,7 +8,6 @@ bolt 0.9.11-3
 brightnessctl 0.5.1-3
 btop 1.4.7-1
 chromium 152.0.7977.82-1
-clang 22.1.8-1
 cliamp 2.0.1-1
 cups 2:2.4.19-1
 docker-compose 5.5.1-1
@@ -34,10 +33,10 @@ intel-ucode 20260812-1
 kdenlive 26.08.0-1
 lazydocker 0.25.2-1
 lazygit 0.65.0-1
+linux-omarchy 7.2.5-3
 localsend 1.18.2-1
-lua51 5.1.5-13
 luarocks 3.13.0-5
-mise-bin 2026.9.5-1
+mise-bin 2026.9.11-1
 moonlight-qt 6.1.0-7
 mpv-mpris 1.2-2
 networkmanager 1.58.1-1
@@ -47,14 +46,14 @@ omacalc 0.2.2-1
 omacut 0.4.0-1
 omarchy-nvim 2026.8.13-1
 omawrite 0.5.0-1
-openai-codex-desktop 26.908.40834-1
+openai-codex-desktop 26.915.31945-1
+openclaw 2026.9.5-1
 pamixer 1.6-4
 pinta 3.1.2-2
 power-profiles-daemon 0.30-1
 python-poetry-core 2.4.1-1
-ripgrep 15.2.0-1
+python-uv 0.12.10-1
 socat 1.8.1.3-1
-sof-firmware 2025.12.2-1
 starship 1.26.0-1
 sushi 50.0-1
 system-config-printer 1.5.18-7
@@ -69,6 +68,8 @@ tzupdate 3.1.0-1
 udiskie 2.7.0-2
 ufw-docker 251123-1
 usage 5.1.0-1
+virtualbox 7.2.16-1
+vlc 3.0.23_2-14
 voxtype-bin 1.0.1-1
 whois 5.6.6-1
 woff2-font-awesome 7.3.1-1

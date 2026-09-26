@@ -1,6 +1,5 @@
 ai-usagebar-bin
-google-chrome
 microsoft-edge-stable-bin
+remmina-git
 sonora-bin
-stirling-pdf-desktop
 vscodium-bin
