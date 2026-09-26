@@ -102,11 +102,15 @@ echo "    Saved $(wc -l < "$MANIFESTS_DIR/omarchy-plugins.txt") plugins to manif
 echo "==> Syncing custom configurations into config/..."
 mkdir -p "$CONFIG_DIR/hypr"
 
-# Copy Hyprland custom keybindings if present
-if [[ -f "$HOME/.config/hypr/bindings.lua" ]]; then
-    cp -f "$HOME/.config/hypr/bindings.lua" "$CONFIG_DIR/hypr/bindings.lua"
-    echo "    Synced ~/.config/hypr/bindings.lua"
-fi
+# Copy Hyprland custom configurations if present
+HYPR_FILES=("autostart.lua" "bindings.lua" "hyprland.lua" "input.lua" "looknfeel.lua" "monitors.lua" "omasettings.lua" "hyprsunset.conf" "xdph.conf" ".luarc.json")
+for file in "${HYPR_FILES[@]}"; do
+    if [[ -f "$HOME/.config/hypr/$file" ]]; then
+        cp -f "$HOME/.config/hypr/$file" "$CONFIG_DIR/hypr/$file"
+        echo "    Synced ~/.config/hypr/$file"
+    fi
+done
+
 
 # Copy Foot terminal config if present
 if [[ -f "$HOME/.config/foot/foot.ini" ]]; then
