@@ -59,3 +59,45 @@ To https://github.com/nikhilmaity00/omarchy-dotfiles.git
   Backup / Export Complete!
 ============================================================
 [2026-09-26 17:35:05] [INFO]  Changes detected in system state/manifests. Creating commit...
+[master be31808] Auto-backup on login (2026-09-26 17:35:05)
+ 1 file changed, 38 insertions(+)
+[2026-09-26 17:35:05] [INFO]  Unpushed commits present. Waiting for network connectivity...
+[2026-09-26 17:35:42] [INFO]  Network available. Pushing updates to remote repository...
+To https://github.com/nikhilmaity00/omarchy-dotfiles.git
+   29f013e..be31808  master -> master
+[2026-09-26 17:35:47] [INFO]  Successfully pushed backup to remote repository (master).
+[2026-09-26 17:35:47] [INFO]  ============================================================
+[2026-09-26 17:35:47] [INFO]    Auto-Backup Complete
+[2026-09-26 17:35:47] [INFO]  ============================================================
+[2026-09-29 21:26:35] [INFO]  ============================================================
+[2026-09-29 21:26:35] [INFO]    Starting Automatic Omarchy Backup & Sync
+[2026-09-29 21:26:35] [INFO]  ============================================================
+[2026-09-29 21:26:35] [INFO]  Running state export...
+============================================================
+  Starting Omarchy Automated Backup / State Export
+============================================================
+==> Exporting official Arch Linux packages...
+    Saved 81 packages to manifests/pacman-official.txt
+==> Exporting foreign / AUR packages...
+    Saved 5 AUR binary packages to manifests/aur-binaries.txt
+==> Exporting editor extensions using codium...
+    Saved 9 extensions to manifests/vscodium-extensions.txt
+==> Exporting Omarchy shell plugins...
+    Saved 11 plugins to manifests/omarchy-plugins.txt
+==> Syncing custom configurations into config/...
+    Synced ~/.config/hypr/autostart.lua
+    Synced ~/.config/hypr/bindings.lua
+    Synced ~/.config/hypr/hyprland.lua
+    Synced ~/.config/hypr/input.lua
+    Synced ~/.config/hypr/looknfeel.lua
+    Synced ~/.config/hypr/monitors.lua
+    Synced ~/.config/hypr/omasettings.lua
+    Synced ~/.config/hypr/hyprsunset.conf
+    Synced ~/.config/hypr/xdph.conf
+    Synced ~/.config/hypr/.luarc.json
+    Synced ~/.config/foot/foot.ini
+    Synced ~/.config/starship.toml
+============================================================
+  Backup / Export Complete!
+============================================================
+[2026-09-29 21:26:36] [INFO]  Changes detected in system state/manifests. Creating commit...

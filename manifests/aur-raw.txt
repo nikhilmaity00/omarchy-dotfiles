@@ -5,3 +5,5 @@ remmina-git 1.4.43+r10534+ga3298a855-1
 sonora-bin 0.38.0-1
 stirling-pdf-desktop 2.14.0-1
 vscodium-bin 1.135.06055-1
+zscaler-client 4.2.1.124-1
+zuno 1.4.0-1

@@ -1,7 +1,4 @@
 agx.screen-time	https://github.com/ax1g/quickshell-screentime-plugin.git
-azterisk.boot	https://github.com/Azteriisk/omarchy-boot-manager.git
-chispes.agent-gemini	https://github.com/Chispes/omarchy-agent-gemini.git
-crmne.mpris	https://github.com/crmne/omarchy-mpris.git
 hancore.bongocat	https://github.com/HANCORE-linux/omarchy-bongocat.git
 io.github.twiking.omasettings	https://github.com/twiking/omasettings.git
 io.github.x3me.nexthop	https://github.com/x3me/omarchy-nexthop.git
@@ -10,6 +7,5 @@ jesseburlamaque.omarchy-find	https://github.com/jesseburlamaque/omarchy-find.git
 mirador	https://github.com/sanjyay/Mirador.git
 omaconnect	https://github.com/jitendradara12/omaconnect.git
 omaplug	https://github.com/fross100/omaplug.git
-ssupt.audio-control	https://github.com/ssupt/omarchy-audio-control.git
 tristonarmstrong.dictionary	https://github.com/tristonarmstrong/omarchy-dictionary.git
 turbinebmw.pip	https://github.com/turbineBMW/PIP
