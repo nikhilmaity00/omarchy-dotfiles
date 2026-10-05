@@ -1,5 +1,4 @@
 ai-usagebar-bin
-microsoft-edge-stable-bin
 remmina-git
 sonora-bin
 vscodium-bin

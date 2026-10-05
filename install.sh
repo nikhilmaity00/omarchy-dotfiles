@@ -5,10 +5,19 @@
 # ==============================================================================
 set -euo pipefail
 
+# Prevent running script directly as root
+if [[ "${EUID:-$(id -u)}" -eq 0 ]]; then
+    echo "ERROR: Do not run this script as root or with sudo." >&2
+    echo "Run it as your normal user: ./install.sh" >&2
+    echo "Administrative tasks will request sudo privileges when needed." >&2
+    exit 1
+fi
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MANIFESTS_DIR="$SCRIPT_DIR/manifests"
 CONFIG_DIR="$SCRIPT_DIR/config"
 LOG_FILE="$SCRIPT_DIR/install.log"
+TARGET_USER="${SUDO_USER:-${USER:-$(id -un)}}"
 
 DRY_RUN=false
 ENABLE_SYSTEMD=true
@@ -40,16 +49,29 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Logging setup
-exec 3>&1 4>&2
-if [[ "$DRY_RUN" == false ]]; then
-    exec > >(tee -a "$LOG_FILE") 2>&1
-fi
-
 log_info()  { echo -e "[\e[34mINFO\e[0m] $1"; }
 log_warn()  { echo -e "[\e[33mWARN\e[0m] $1"; }
 log_error() { echo -e "[\e[31mERROR\e[0m] $1"; }
 log_step()  { echo -e "\n\e[1;36m==> $1\e[0m"; }
+
+# Request and maintain sudo credentials upfront
+if [[ "$DRY_RUN" == false ]]; then
+    log_info "Verifying administrator (sudo) privileges..."
+    if ! sudo -v; then
+        log_error "Failed to authenticate sudo credentials."
+        exit 1
+    fi
+    # Keep sudo timestamp fresh in background while script executes
+    while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+    SUDO_KEEP_ALIVE_PID=$!
+    trap 'kill "$SUDO_KEEP_ALIVE_PID" 2>/dev/null || true' EXIT
+fi
+
+# Set up logging to both terminal and install.log
+if [[ "$DRY_RUN" == false ]]; then
+    touch "$LOG_FILE"
+    exec > >(tee -a "$LOG_FILE") 2>&1
+fi
 
 echo "============================================================"
 echo "  Omarchy Reproducible Restoration Engine"
@@ -66,6 +88,12 @@ log_step "Verifying Environment"
 if ! command -v pacman &> /dev/null; then
     log_error "Pacman not found. This script must be run on Arch/Omarchy Linux."
     exit 1
+fi
+
+# Synchronize package databases to avoid 404s on rolling packages
+if [[ "$DRY_RUN" == false ]]; then
+    log_info "Synchronizing pacman package databases..."
+    sudo pacman -Sy --noconfirm || log_warn "Failed to synchronize package databases. Continuing with existing cache..."
 fi
 
 # Ensure AUR Helper (yay)
@@ -89,22 +117,42 @@ install_pacman_packages() {
     [[ ! -f "$file" ]] && return 0
 
     local pkgs=()
-    mapfile -t pkgs < <(grep -v '^#' "$file" | grep -v '^$')
+    mapfile -t pkgs < <(grep -v '^[[:space:]]*#' "$file" | grep -v '^[[:space:]]*$' || true)
     [[ ${#pkgs[@]} -eq 0 ]] && return 0
 
-    log_info "Restoring ${#pkgs[@]} official Arch packages..."
+    log_info "Checking ${#pkgs[@]} official Arch packages from $(basename "$file")..."
+
     if [[ "$DRY_RUN" == true ]]; then
-        echo "    [Dry-run] Would install: ${pkgs[*]}"
+        echo "    [Dry-run] Would check and install: ${pkgs[*]}"
         return 0
     fi
 
+    # Filter out already-installed packages for fast execution
+    local to_install=()
+    for pkg in "${pkgs[@]}"; do
+        if ! pacman -Q "$pkg" &>/dev/null; then
+            to_install+=("$pkg")
+        fi
+    done
+
+    if [[ ${#to_install[@]} -eq 0 ]]; then
+        log_info "All ${#pkgs[@]} official packages are already installed."
+        return 0
+    fi
+
+    log_info "Installing ${#to_install[@]} uninstalled package(s): ${to_install[*]}"
+
     # Attempt batch install first for speed
-    if sudo pacman -S --needed --noconfirm "${pkgs[@]}" &>/dev/null; then
-        log_info "Successfully installed official packages in batch mode."
+    if sudo pacman -S --needed --noconfirm "${to_install[@]}"; then
+        log_info "Successfully installed packages in batch mode."
     else
         log_warn "Batch pacman installation encountered an error. Falling back to itemized installation..."
-        for pkg in "${pkgs[@]}"; do
-            sudo pacman -S --needed --noconfirm "$pkg" &>/dev/null || log_warn "Failed to install pacman package: $pkg"
+        for pkg in "${to_install[@]}"; do
+            if pacman -Q "$pkg" &>/dev/null; then
+                continue
+            fi
+            log_info "Installing: $pkg"
+            sudo pacman -S --needed --noconfirm "$pkg" || log_warn "Failed to install pacman package: $pkg"
         done
     fi
 }
@@ -114,22 +162,42 @@ install_aur_packages() {
     [[ ! -f "$file" ]] && return 0
 
     local pkgs=()
-    mapfile -t pkgs < <(grep -v '^#' "$file" | grep -v '^$')
+    mapfile -t pkgs < <(grep -v '^[[:space:]]*#' "$file" | grep -v '^[[:space:]]*$' || true)
     [[ ${#pkgs[@]} -eq 0 ]] && return 0
 
-    log_info "Restoring ${#pkgs[@]} AUR binary packages..."
+    log_info "Checking ${#pkgs[@]} AUR binary packages from $(basename "$file")..."
+
     if [[ "$DRY_RUN" == true ]]; then
-        echo "    [Dry-run] Would install AUR packages: ${pkgs[*]}"
+        echo "    [Dry-run] Would check and install AUR packages: ${pkgs[*]}"
         return 0
     fi
 
-    # Attempt batch install first
-    if yay -S --needed --noconfirm "${pkgs[@]}" &>/dev/null; then
+    # Filter out already-installed packages
+    local to_install=()
+    for pkg in "${pkgs[@]}"; do
+        if ! pacman -Q "$pkg" &>/dev/null; then
+            to_install+=("$pkg")
+        fi
+    done
+
+    if [[ ${#to_install[@]} -eq 0 ]]; then
+        log_info "All ${#pkgs[@]} AUR packages are already installed."
+        return 0
+    fi
+
+    log_info "Installing ${#to_install[@]} uninstalled AUR package(s): ${to_install[*]}"
+
+    # Attempt batch install first with non-interactive flags
+    if yay -S --needed --noconfirm --answerclean None --answerdiff None "${to_install[@]}"; then
         log_info "Successfully installed AUR packages in batch mode."
     else
         log_warn "Batch AUR installation encountered an error. Falling back to itemized installation..."
-        for pkg in "${pkgs[@]}"; do
-            yay -S --needed --noconfirm "$pkg" &>/dev/null || log_warn "Failed to install AUR package: $pkg"
+        for pkg in "${to_install[@]}"; do
+            if pacman -Q "$pkg" &>/dev/null; then
+                continue
+            fi
+            log_info "Installing AUR package: $pkg"
+            yay -S --needed --noconfirm --answerclean None --answerdiff None "$pkg" || log_warn "Failed to install AUR package: $pkg"
         done
     fi
 }
@@ -144,54 +212,80 @@ install_aur_packages "$MANIFESTS_DIR/aur-binaries.txt"
 # ------------------------------------------------------------------------------
 # 3. Restore Flatpak Applications
 # ------------------------------------------------------------------------------
-if [[ -f "$MANIFESTS_DIR/flatpak.txt" ]] && command -v flatpak &> /dev/null; then
+install_flatpaks() {
+    local file="$1"
+    [[ ! -f "$file" ]] && return 0
+    ! command -v flatpak &>/dev/null && return 0
+
+    local flatpaks=()
+    mapfile -t flatpaks < <(grep -v '^[[:space:]]*#' "$file" | grep -v '^[[:space:]]*$' || true)
+    [[ ${#flatpaks[@]} -eq 0 ]] && return 0
+
     log_step "Restoring Flatpak Applications"
-    grep -v '^#' "$MANIFESTS_DIR/flatpak.txt" | grep -v '^$' | while read -r app; do
-        if [[ -n "$app" ]]; then
-            log_info "Installing Flatpak: $app"
-            if [[ "$DRY_RUN" == false ]]; then
-                flatpak install -y flathub "$app" || log_warn "Failed to install Flatpak $app"
-            fi
+    for app in "${flatpaks[@]}"; do
+        log_info "Installing Flatpak: $app"
+        if [[ "$DRY_RUN" == false ]]; then
+            flatpak install -y flathub "$app" || log_warn "Failed to install Flatpak $app"
         fi
     done
-fi
+}
 
 # ------------------------------------------------------------------------------
 # 4. Restore Editor Extensions (VSCodium / VS Code)
 # ------------------------------------------------------------------------------
-if [[ -f "$MANIFESTS_DIR/vscodium-extensions.txt" ]]; then
-    EDITOR_CMD=""
-    if command -v codium &> /dev/null; then EDITOR_CMD="codium";
-    elif command -v code &> /dev/null; then EDITOR_CMD="code";
-    elif command -v vscodium &> /dev/null; then EDITOR_CMD="vscodium"; fi
+install_editor_extensions() {
+    local file="$1"
+    [[ ! -f "$file" ]] && return 0
 
-    if [[ -n "$EDITOR_CMD" ]]; then
-        log_step "Restoring Editor Extensions ($EDITOR_CMD)"
-        grep -v '^#' "$MANIFESTS_DIR/vscodium-extensions.txt" | grep -v '^$' | while read -r ext; do
-            if [[ -n "$ext" ]]; then
-                log_info "Installing extension: $ext"
-                if [[ "$DRY_RUN" == false ]]; then
-                    $EDITOR_CMD --install-extension "$ext" --force || log_warn "Failed to install extension $ext"
-                fi
-            fi
-        done
-    fi
-fi
+    local editor_cmd=""
+    if command -v codium &> /dev/null; then editor_cmd="codium";
+    elif command -v code &> /dev/null; then editor_cmd="code";
+    elif command -v vscodium &> /dev/null; then editor_cmd="vscodium"; fi
+
+    [[ -z "$editor_cmd" ]] && return 0
+
+    local extensions=()
+    mapfile -t extensions < <(grep -v '^[[:space:]]*#' "$file" | grep -v '^[[:space:]]*$' || true)
+    [[ ${#extensions[@]} -eq 0 ]] && return 0
+
+    log_step "Restoring Editor Extensions ($editor_cmd)"
+    for ext in "${extensions[@]}"; do
+        log_info "Installing extension: $ext"
+        if [[ "$DRY_RUN" == false ]]; then
+            $editor_cmd --install-extension "$ext" --force || log_warn "Failed to install extension $ext"
+        fi
+    done
+}
 
 # ------------------------------------------------------------------------------
 # 5. Restore Omarchy Plugins
 # ------------------------------------------------------------------------------
-if [[ -f "$MANIFESTS_DIR/omarchy-plugins.txt" ]] && command -v omarchy &> /dev/null; then
+install_omarchy_plugins() {
+    local file="$1"
+    [[ ! -f "$file" ]] && return 0
+    ! command -v omarchy &> /dev/null && return 0
+
     log_step "Restoring Omarchy Shell Plugins"
-    while IFS=$'\t' read -r plugin_id git_url; do
-        if [[ -n "$git_url" && "$git_url" != "#"* ]]; then
-            log_info "Installing Omarchy plugin: $plugin_id ($git_url)"
-            if [[ "$DRY_RUN" == false ]]; then
-                omarchy plugin add "$git_url" --enable --yes || log_warn "Failed to add plugin $plugin_id"
-            fi
+    while IFS=$'\t' read -r plugin_id git_url || [[ -n "${plugin_id:-}" ]]; do
+        [[ -z "${plugin_id:-}" || "$plugin_id" =~ ^[[:space:]]*# ]] && continue
+        [[ -z "${git_url:-}" ]] && continue
+
+        if [[ -d "$HOME/.config/omarchy/plugins/$plugin_id" ]]; then
+            log_info "Omarchy plugin already installed: $plugin_id"
+            continue
         fi
-    done < "$MANIFESTS_DIR/omarchy-plugins.txt"
-fi
+
+        log_info "Installing Omarchy plugin: $plugin_id ($git_url)"
+        if [[ "$DRY_RUN" == false ]]; then
+            omarchy plugin add "$git_url" --enable --yes || log_warn "Failed to add plugin $plugin_id"
+        fi
+    done < "$file"
+}
+
+# Execute remaining restorations
+install_flatpaks "$MANIFESTS_DIR/flatpak.txt"
+install_editor_extensions "$MANIFESTS_DIR/vscodium-extensions.txt"
+install_omarchy_plugins "$MANIFESTS_DIR/omarchy-plugins.txt"
 
 # ------------------------------------------------------------------------------
 # 6. Hardware Abstraction: Auto-configure Display Outputs
@@ -205,13 +299,13 @@ if [[ "$DRY_RUN" == false ]]; then
 
     # 1. Try hyprctl if Hyprland active
     if command -v hyprctl &> /dev/null && hyprctl monitors &> /dev/null; then
-        DETECTED_MONITOR=$(hyprctl monitors | grep "Monitor" | awk '{print $2}' | head -n 1)
+        DETECTED_MONITOR=$(hyprctl monitors 2>/dev/null | grep "Monitor" | awk '{print $2}' | head -n 1 || true)
     fi
 
     # 2. Fallback: Check sysfs DRM connector status
     if [[ -z "$DETECTED_MONITOR" ]]; then
         for conn in /sys/class/drm/card*-*/status; do
-            if [[ -f "$conn" ]] && grep -q "^connected" "$conn"; then
+            if [[ -f "$conn" ]] && grep -q "^connected" "$conn" 2>/dev/null; then
                 DETECTED_MONITOR=$(echo "$conn" | cut -d/ -f5 | sed 's/card[0-9]*-//')
                 break
             fi
@@ -238,6 +332,15 @@ if [[ -d "$CONFIG_DIR" ]]; then
         mkdir -p "$HOME/.config"
         cp -rf "$CONFIG_DIR/." "$HOME/.config/"
         log_info "Deployed configs from $CONFIG_DIR to $HOME/.config/"
+
+        # Reload live environment if Hyprland or Omarchy shell is active
+        if command -v hyprctl &>/dev/null && hyprctl monitors &>/dev/null; then
+            hyprctl reload &>/dev/null || true
+            log_info "Reloaded Hyprland configuration."
+        fi
+        if command -v omarchy-shell &>/dev/null; then
+            omarchy-shell shell rescanPlugins &>/dev/null || true
+        fi
     else
         echo "    [Dry-run] Would copy contents of $CONFIG_DIR to $HOME/.config/"
     fi
@@ -247,7 +350,9 @@ fi
 if command -v chezmoi &> /dev/null && [[ -d "$HOME/.local/share/chezmoi" ]]; then
     log_info "Applying Chezmoi dotfiles..."
     if [[ "$DRY_RUN" == false ]]; then
-        chezmoi apply
+        chezmoi apply --force || log_warn "Chezmoi apply encountered warnings."
+    else
+        echo "    [Dry-run] Would apply Chezmoi dotfiles"
     fi
 fi
 
@@ -258,20 +363,22 @@ if [[ "$ENABLE_SYSTEMD" == true ]]; then
     log_step "Configuring Systemd Services and User Groups"
     if [[ "$DRY_RUN" == false ]]; then
         # System daemons
-        command -v bluetoothd &>/dev/null && sudo systemctl enable --now bluetooth.service || true
-        command -v cupsd &>/dev/null      && sudo systemctl enable --now cups.service || true
-        command -v dockerd &>/dev/null    && sudo systemctl enable --now docker.socket || true
-        command -v avahi-daemon &>/dev/null && sudo systemctl enable --now avahi-daemon.service || true
+        command -v bluetoothd &>/dev/null && sudo systemctl enable --now bluetooth.service 2>/dev/null || true
+        command -v cupsd &>/dev/null      && sudo systemctl enable --now cups.service 2>/dev/null || true
+        command -v dockerd &>/dev/null    && sudo systemctl enable --now docker.socket 2>/dev/null || true
+        command -v avahi-daemon &>/dev/null && sudo systemctl enable --now avahi-daemon.service 2>/dev/null || true
 
         # User daemons
-        systemctl --user enable --now pipewire.service wireplumber.service || true
+        systemctl --user enable --now pipewire.service wireplumber.service 2>/dev/null || true
 
         # User Groups
-        command -v dockerd &>/dev/null && sudo usermod -aG docker "$USER" 2>/dev/null || true
-        sudo usermod -aG video,input "$USER" 2>/dev/null || true
-        log_info "System services and group permissions updated."
+        if command -v dockerd &>/dev/null; then
+            sudo usermod -aG docker "$TARGET_USER" 2>/dev/null || true
+        fi
+        sudo usermod -aG video,input "$TARGET_USER" 2>/dev/null || true
+        log_info "System services and group permissions updated for user $TARGET_USER."
     else
-        echo "    [Dry-run] Would enable bluetooth, cups, docker services and set user groups"
+        echo "    [Dry-run] Would enable bluetooth, cups, docker services and set user groups for $TARGET_USER"
     fi
 fi
 
@@ -279,7 +386,7 @@ fi
 # 9. Shell Environment Verification
 # ------------------------------------------------------------------------------
 log_step "Verifying Default Shell"
-if command -v zsh &> /dev/null && [[ "$SHELL" != *"zsh"* ]]; then
+if command -v zsh &> /dev/null && [[ "${SHELL:-}" != *"zsh"* ]]; then
     log_info "Zsh is installed. To switch default shell run: chsh -s \$(which zsh)"
 fi
 

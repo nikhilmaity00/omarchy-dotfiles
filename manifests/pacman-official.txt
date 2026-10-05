@@ -1,5 +1,6 @@
 aether
 alsa-utils
+amd-ucode
 asdcontrol
 base
 bat
@@ -33,13 +34,16 @@ intel-ucode
 kdenlive
 lazydocker
 lazygit
+libva-nvidia-driver
 linux-omarchy
 localsend
 luarocks
+microsoft-edge-stable-bin
 mise-bin
 moonlight-qt
 mpv-mpris
 networkmanager
+nvidia-open-dkms
 obs-studio
 obsidian
 omacalc
