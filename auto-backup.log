@@ -457,3 +457,48 @@ To github.com:nikhilmaity00/omarchy-dotfiles.git
   Backup / Export Complete!
 ============================================================
 [2026-10-05 09:30:02] [INFO]  Changes detected in system state/manifests. Creating commit...
+[master 57511bc] Auto-backup on login (2026-10-05 09:30:02)
+ 1 file changed, 47 insertions(+)
+[2026-10-05 09:30:02] [INFO]  Unpushed commits present. Waiting for network connectivity...
+[2026-10-05 09:30:02] [INFO]  Network available. Pushing updates to remote repository...
+To github.com:nikhilmaity00/omarchy-dotfiles.git
+   9b5c7e5..57511bc  master -> master
+[2026-10-05 09:30:04] [INFO]  Successfully pushed backup to remote repository (master).
+[2026-10-05 09:30:04] [INFO]  ============================================================
+[2026-10-05 09:30:04] [INFO]    Auto-Backup Complete
+[2026-10-05 09:30:04] [INFO]  ============================================================
+[2026-10-05 09:34:24] [INFO]  ============================================================
+[2026-10-05 09:34:24] [INFO]    Starting Automatic Omarchy Backup & Sync
+[2026-10-05 09:34:24] [INFO]  ============================================================
+[2026-10-05 09:34:24] [INFO]  Running state export...
+============================================================
+  Starting Omarchy Automated Backup / State Export
+============================================================
+==> Exporting official Arch Linux packages...
+    Saved 85 packages to manifests/pacman-official.txt
+==> Exporting foreign / AUR packages...
+    Saved 4 AUR binary packages to manifests/aur-binaries.txt
+==> Exporting editor extensions using codium...
+    Saved 9 extensions to manifests/vscodium-extensions.txt
+==> Exporting Omarchy shell plugins...
+    Saved 11 plugins to manifests/omarchy-plugins.txt
+==> Syncing custom configurations into config/...
+    Synced ~/.config/hypr/autostart.lua
+    Synced ~/.config/hypr/bindings.lua
+    Synced ~/.config/hypr/hyprland.lua
+    Synced ~/.config/hypr/input.lua
+    Synced ~/.config/hypr/looknfeel.lua
+    Synced ~/.config/hypr/monitors.lua
+    Synced ~/.config/hypr/omasettings.lua
+    Synced ~/.config/hypr/hyprsunset.conf
+    Synced ~/.config/hypr/xdph.conf
+    Synced ~/.config/hypr/.luarc.json
+    Synced ~/.config/foot/foot.ini
+    Synced ~/.config/starship.toml
+    Synced ~/.config/omarchy/shell.json
+    Synced ~/.config/omarchy/omasettings.json
+    Synced local Omarchy plugin: nikhil.workspaces
+============================================================
+  Backup / Export Complete!
+============================================================
+[2026-10-05 09:34:25] [INFO]  Changes detected in system state/manifests. Creating commit...
