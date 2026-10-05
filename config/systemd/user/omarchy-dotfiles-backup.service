@@ -1,0 +1,13 @@
+[Unit]
+Description=Omarchy Dotfiles Automated Backup & Sync
+Documentation=https://github.com/nikhilmaity00/omarchy-dotfiles
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/omarchy-backup
+StandardOutput=journal
+StandardError=journal
+Nice=19
+CPUSchedulingPolicy=idle

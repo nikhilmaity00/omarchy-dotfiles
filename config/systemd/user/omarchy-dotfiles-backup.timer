@@ -1,0 +1,14 @@
+[Unit]
+Description=Omarchy Dotfiles Auto-Backup Timer
+Documentation=https://github.com/nikhilmaity00/omarchy-dotfiles
+
+[Timer]
+# Run 2 minutes after boot / user session login
+OnStartupSec=2m
+# Run every 2 hours while active
+OnUnitActiveSec=2h
+# Ensure missed runs (e.g. while sleeping or powered off) trigger upon wakeup
+Persistent=true
+
+[Install]
+WantedBy=timers.target

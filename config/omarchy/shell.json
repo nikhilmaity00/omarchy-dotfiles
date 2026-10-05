@@ -83,6 +83,9 @@
           "id": "omarchy.agents"
         },
         {
+          "id": "bt.codecs"
+        },
+        {
           "id": "omarchy.bluetooth"
         },
         {

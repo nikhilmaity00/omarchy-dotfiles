@@ -151,6 +151,17 @@ if [[ -d "$HOME/.config/omarchy" ]]; then
     fi
 fi
 
+# Copy automated backup systemd units if present
+if [[ -d "$HOME/.config/systemd/user" ]]; then
+    mkdir -p "$CONFIG_DIR/systemd/user"
+    for unit in "$HOME/.config/systemd/user"/omarchy-dotfiles-backup.*; do
+        if [[ -f "$unit" ]]; then
+            cp -f "$unit" "$CONFIG_DIR/systemd/user/"
+            echo "    Synced $(basename "$unit")"
+        fi
+    done
+fi
+
 echo "============================================================"
 echo "  Backup / Export Complete!"
 echo "============================================================"

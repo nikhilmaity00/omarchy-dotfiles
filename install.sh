@@ -370,6 +370,11 @@ if [[ "$ENABLE_SYSTEMD" == true ]]; then
 
         # User daemons
         systemctl --user enable --now pipewire.service wireplumber.service 2>/dev/null || true
+        if [[ -f "$HOME/.config/systemd/user/omarchy-dotfiles-backup.timer" ]]; then
+            systemctl --user daemon-reload 2>/dev/null || true
+            systemctl --user enable --now omarchy-dotfiles-backup.timer 2>/dev/null || true
+            log_info "Enabled automated dotfiles backup timer."
+        fi
 
         # User Groups
         if command -v dockerd &>/dev/null; then
@@ -378,7 +383,7 @@ if [[ "$ENABLE_SYSTEMD" == true ]]; then
         sudo usermod -aG video,input "$TARGET_USER" 2>/dev/null || true
         log_info "System services and group permissions updated for user $TARGET_USER."
     else
-        echo "    [Dry-run] Would enable bluetooth, cups, docker services and set user groups for $TARGET_USER"
+        echo "    [Dry-run] Would enable bluetooth, cups, docker services, dotfiles backup timer and set user groups for $TARGET_USER"
     fi
 fi
 
