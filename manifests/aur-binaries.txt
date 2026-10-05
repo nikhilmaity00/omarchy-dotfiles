@@ -1,4 +1,5 @@
 ai-usagebar-bin
+powershell-bin
 remmina-git
 sonora-bin
 vscodium-bin

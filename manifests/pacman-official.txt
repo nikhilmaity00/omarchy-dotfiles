@@ -59,6 +59,7 @@ python-poetry-core
 python-uv
 socat
 starship
+supergfxctl
 sushi
 system-config-printer
 tensaku
