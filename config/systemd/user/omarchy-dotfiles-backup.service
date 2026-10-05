@@ -11,3 +11,6 @@ StandardOutput=journal
 StandardError=journal
 Nice=19
 CPUSchedulingPolicy=idle
+
+[Install]
+WantedBy=default.target
