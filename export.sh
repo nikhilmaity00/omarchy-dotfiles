@@ -137,6 +137,18 @@ if [[ -d "$HOME/.config/omarchy" ]]; then
     mkdir -p "$CONFIG_DIR/omarchy"
     [[ -f "$HOME/.config/omarchy/shell.json" ]] && cp -f "$HOME/.config/omarchy/shell.json" "$CONFIG_DIR/omarchy/shell.json" && echo "    Synced ~/.config/omarchy/shell.json"
     [[ -f "$HOME/.config/omarchy/omasettings.json" ]] && cp -f "$HOME/.config/omarchy/omasettings.json" "$CONFIG_DIR/omarchy/omasettings.json" && echo "    Synced ~/.config/omarchy/omasettings.json"
+
+    # Sync local custom plugins (those without .git)
+    if [[ -d "$PLUGINS_DIR" ]]; then
+        for dir in "$PLUGINS_DIR"/*; do
+            if [[ -d "$dir" && ! -d "$dir/.git" ]]; then
+                pname=$(basename "$dir")
+                mkdir -p "$CONFIG_DIR/omarchy/plugins/$pname"
+                cp -rf "$dir/." "$CONFIG_DIR/omarchy/plugins/$pname/"
+                echo "    Synced local Omarchy plugin: $pname"
+            fi
+        done
+    fi
 fi
 
 echo "============================================================"

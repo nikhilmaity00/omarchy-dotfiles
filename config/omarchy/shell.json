@@ -14,7 +14,7 @@
           "id": "omarchy.menu"
         },
         {
-          "id": "omarchy.workspaces"
+          "id": "nikhil.workspaces"
         }
       ],
       "center": [
@@ -63,7 +63,18 @@
           "id": "io.github.twiking.omasettings"
         },
         {
-          "id": "hancore.bongocat"
+          "id": "hancore.bongocat",
+          "active": false,
+          "positionLocked": true,
+          "positionX": -1,
+          "positionY": -1,
+          "catWidth": 280,
+          "keypressDuration": 100,
+          "keyboardName": "",
+          "monitorName": "",
+          "workspaceId": 0,
+          "colorMode": "default",
+          "customColor": "#f0abab"
         },
         {
           "id": "agx.screen-time"
