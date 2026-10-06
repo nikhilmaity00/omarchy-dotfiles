@@ -1,12 +1,17 @@
 agx.screen-time	https://github.com/ax1g/quickshell-screentime-plugin.git
 hancore.bongocat	https://github.com/HANCORE-linux/omarchy-bongocat.git
 io.github.twiking.omasettings	https://github.com/twiking/omasettings.git
+io.github.tyrichards.tray	https://github.com/TyRichards/omarchy-tray.git
 io.github.x3me.nexthop	https://github.com/x3me/omarchy-nexthop.git
 jankeesvw.notification-center	https://github.com/jankeesvw/omarchy-notification-center.git
 jesseburlamaque.omarchy-find	https://github.com/jesseburlamaque/omarchy-find.git
 mirador	https://github.com/sanjyay/Mirador.git
 mjasnikovs.breaktime	https://github.com/mjasnikovs/omarchy-breaktime.git
+njpatel.omapager	https://github.com/ryanrhughes/omapager.git
 omaconnect	https://github.com/jitendradara12/omaconnect.git
 omaplug	https://github.com/fross100/omaplug.git
+tahayvr.postcard	https://github.com/tahayvr/postcard.git
+tmn73.calendar	https://github.com/tmn73/omarchy-calendar.git
+tornikegomareli.spaces	https://github.com/tornikegomareli/omarchy-spaces.git
 tristonarmstrong.dictionary	https://github.com/tristonarmstrong/omarchy-dictionary.git
 turbinebmw.pip	https://github.com/turbineBMW/PIP

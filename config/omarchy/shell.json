@@ -14,24 +14,30 @@
           "id": "omarchy.menu"
         },
         {
-          "id": "nikhil.workspaces"
+          "id": "tornikegomareli.spaces",
+          "activeStyle": "subtle",
+          "pillBackground": false,
+          "labelStyle": "number",
+          "density": "compact",
+          "hideEmpty": true,
+          "previewSize": "large",
+          "previewLive": false,
+          "animations": false
         }
       ],
       "center": [
-        {
-          "id": "omarchy.indicators"
-        },
-        {
-          "id": "omarchy.clock",
-          "format": "dddd HH:mm",
-          "formatAlt": "d MMMM 'W'ww yyyy",
-          "verticalFormat": "HH\n—\nmm"
-        },
         {
           "id": "omarchy.keyboard-layout"
         },
         {
           "id": "omarchy.weather"
+        },
+        {
+          "id": "tmn73.calendar",
+          "format": "ddd d MMM HH:mm"
+        },
+        {
+          "id": "njpatel.omapager"
         },
         {
           "id": "omarchy.system-update"
@@ -42,10 +48,63 @@
           "id": "omarchy.tray"
         },
         {
-          "id": "tristonarmstrong.dictionary"
+          "id": "io.github.tyrichards.tray",
+          "widgets": [
+            {
+              "entry": {
+                "id": "hancore.bongocat",
+                "active": false,
+                "positionLocked": true,
+                "positionX": -1,
+                "positionY": -1,
+                "catWidth": 280,
+                "keypressDuration": 100,
+                "keyboardName": "",
+                "monitorName": "",
+                "workspaceId": 0,
+                "colorMode": "default",
+                "customColor": "#f0abab"
+              },
+              "listed": true
+            },
+            {
+              "entry": {
+                "id": "io.github.twiking.omasettings"
+              },
+              "listed": true
+            },
+            {
+              "entry": {
+                "id": "omaplug",
+                "bulkUpdateScope": "verified",
+                "autoCheckUpdates": true,
+                "autoCheckIntervalHours": 6
+              },
+              "listed": true
+            },
+            {
+              "entry": {
+                "id": "tristonarmstrong.dictionary"
+              },
+              "listed": true
+            },
+            {
+              "entry": {
+                "id": "omarchy.monitor"
+              },
+              "listed": true
+            }
+          ],
+          "order": [
+            "io.github.twiking.omasettings",
+            "hancore.bongocat",
+            "tristonarmstrong.dictionary",
+            "omarchy.monitor",
+            "omaplug"
+          ]
         },
         {
-          "id": "omaplug"
+          "id": "tahayvr.postcard"
         },
         {
           "id": "omaconnect"
@@ -54,27 +113,7 @@
           "id": "jankeesvw.notification-center"
         },
         {
-          "id": "io.github.x3me.nexthop"
-        },
-        {
           "id": "jesseburlamaque.omarchy-find"
-        },
-        {
-          "id": "io.github.twiking.omasettings"
-        },
-        {
-          "id": "hancore.bongocat",
-          "active": false,
-          "positionLocked": true,
-          "positionX": -1,
-          "positionY": -1,
-          "catWidth": 280,
-          "keypressDuration": 100,
-          "keyboardName": "",
-          "monitorName": "",
-          "workspaceId": 0,
-          "colorMode": "default",
-          "customColor": "#f0abab"
         },
         {
           "id": "agx.screen-time"
@@ -83,16 +122,16 @@
           "id": "omarchy.agents"
         },
         {
-          "id": "omarchy.bluetooth"
+          "id": "io.github.x3me.nexthop"
         },
         {
           "id": "omarchy.network"
         },
         {
-          "id": "omarchy.audio"
+          "id": "omarchy.bluetooth"
         },
         {
-          "id": "omarchy.monitor"
+          "id": "omarchy.audio"
         },
         {
           "id": "omarchy.power"
@@ -106,6 +145,21 @@
     },
     {
       "id": "turbinebmw.pip"
+    },
+    {
+      "id": "hancore.bongocat"
+    },
+    {
+      "id": "io.github.twiking.omasettings"
+    },
+    {
+      "id": "omaplug"
+    },
+    {
+      "id": "tristonarmstrong.dictionary"
+    },
+    {
+      "id": "omarchy.monitor"
     }
   ]
 }

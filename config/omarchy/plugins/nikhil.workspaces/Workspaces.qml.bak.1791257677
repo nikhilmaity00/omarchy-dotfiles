@@ -39,23 +39,13 @@ BarWidget {
     return null
   }
 
-  function isSingleScreen() {
-    var count = (Hyprland.monitors && Hyprland.monitors.values) ? Hyprland.monitors.values.length : 0
-    return count <= 1
-  }
-
-  function isInternalScreen(name) {
-    if (!name) return false
-    return name.indexOf("eDP-") === 0 || name.indexOf("LVDS-") === 0 || name.indexOf("DSI-") === 0
-  }
-
   function workspaceBelongsToThisScreen(wsId, wsMonitorName) {
     var sName = root.screenName
     if (!sName) return true
-    if (isSingleScreen()) return true
     if (wsMonitorName) return wsMonitorName === sName
-    if (isInternalScreen(sName)) return (wsId % 2 === 0)
-    return (wsId % 2 === 1)
+    if (sName === "HDMI-A-1") return (wsId % 2 === 1)
+    if (sName === "eDP-1") return (wsId % 2 === 0)
+    return true
   }
 
   function workspaceIds() {
