@@ -1,5 +1,4 @@
 agx.screen-time	https://github.com/ax1g/quickshell-screentime-plugin.git
-hancore.bongocat	https://github.com/HANCORE-linux/omarchy-bongocat.git
 io.github.twiking.omasettings	https://github.com/twiking/omasettings.git
 io.github.tyrichards.tray	https://github.com/TyRichards/omarchy-tray.git
 io.github.x3me.nexthop	https://github.com/x3me/omarchy-nexthop.git

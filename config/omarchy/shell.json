@@ -37,9 +37,6 @@
           "format": "ddd d MMM HH:mm"
         },
         {
-          "id": "njpatel.omapager"
-        },
-        {
           "id": "omarchy.system-update"
         }
       ],
@@ -111,6 +108,9 @@
         },
         {
           "id": "jankeesvw.notification-center"
+        },
+        {
+          "id": "njpatel.omapager"
         },
         {
           "id": "jesseburlamaque.omarchy-find"
