@@ -158,5 +158,8 @@
     {
       "id": "omarchy.monitor"
     }
+  ],
+  "disabledPlugins": [
+    "omarchy.notifications"
   ]
 }
