@@ -16,13 +16,14 @@
         {
           "id": "tornikegomareli.spaces",
           "activeStyle": "subtle",
-          "pillBackground": false,
-          "labelStyle": "number",
+          "animations": false,
           "density": "compact",
           "hideEmpty": true,
-          "previewSize": "large",
+          "labelStyle": "number",
+          "pillBackground": false,
           "previewLive": false,
-          "animations": false
+          "previewSize": "large",
+          "showApps": "all"
         }
       ],
       "center": [
