@@ -108,7 +108,9 @@
           "id": "omaconnect"
         },
         {
-          "id": "njpatel.omapager"
+          "id": "njpatel.omapager",
+          "displayMode": "all",
+          "showCountdown": true
         },
         {
           "id": "jesseburlamaque.omarchy-find"
