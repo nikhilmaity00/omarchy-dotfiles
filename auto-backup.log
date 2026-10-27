@@ -375,3 +375,53 @@ error: failed to push some refs to 'https://github.com/nikhilmaity00/omarchy-dot
   Backup / Export Complete!
 ============================================================
 [2026-10-04 18:45:28] [INFO]  Changes detected in system state/manifests. Creating commit...
+[master 862bf34] Auto-backup on login (2026-10-04 18:45:28)
+ 1 file changed, 35 insertions(+)
+[2026-10-04 18:45:28] [INFO]  Unpushed commits present. Waiting for network connectivity...
+[2026-10-04 18:45:33] [INFO]  Network available. Pushing updates to remote repository...
+[2026-10-04 18:45:33] [INFO]  Network available. Pushing updates to remote repository...
+To https://github.com/nikhilmaity00/omarchy-dotfiles.git
+   ab0a6cc..862bf34  master -> master
+[2026-10-04 18:45:34] [INFO]  Successfully pushed backup to remote repository (master).
+[2026-10-04 18:45:34] [INFO]  ============================================================
+[2026-10-04 18:45:34] [INFO]    Auto-Backup Complete
+[2026-10-04 18:45:34] [INFO]  ============================================================
+To https://github.com/nikhilmaity00/omarchy-dotfiles.git
+ ! [remote rejected] master -> master (cannot lock ref 'refs/heads/master': is at 862bf34faba2d899d992bee4c7908b5c8db2ef8d but expected ab0a6cce8d8e54d17cdc2cd4aaf9814b70311bfa)
+error: failed to push some refs to 'https://github.com/nikhilmaity00/omarchy-dotfiles.git'
+[2026-10-04 18:45:34] [ERROR] Failed to push backup to remote repository.
+[2026-10-04 18:45:34] [INFO]  ============================================================
+[2026-10-04 18:45:34] [INFO]    Auto-Backup Complete
+[2026-10-04 18:45:34] [INFO]  ============================================================
+[2026-10-27 20:14:24] [INFO]  ============================================================
+[2026-10-27 20:14:24] [INFO]    Starting Automatic Omarchy Backup & Sync
+[2026-10-27 20:14:24] [INFO]  ============================================================
+[2026-10-27 20:14:24] [INFO]  Running state export...
+============================================================
+  Starting Omarchy Automated Backup / State Export
+============================================================
+==> Exporting official Arch Linux packages...
+    Saved 81 packages to manifests/pacman-official.txt
+==> Exporting foreign / AUR packages...
+    Saved 5 AUR binary packages to manifests/aur-binaries.txt
+==> Exporting editor extensions using codium...
+    Saved 9 extensions to manifests/vscodium-extensions.txt
+==> Exporting Omarchy shell plugins...
+    Saved 11 plugins to manifests/omarchy-plugins.txt
+==> Syncing custom configurations into config/...
+    Synced ~/.config/hypr/autostart.lua
+    Synced ~/.config/hypr/bindings.lua
+    Synced ~/.config/hypr/hyprland.lua
+    Synced ~/.config/hypr/input.lua
+    Synced ~/.config/hypr/looknfeel.lua
+    Synced ~/.config/hypr/monitors.lua
+    Synced ~/.config/hypr/omasettings.lua
+    Synced ~/.config/hypr/hyprsunset.conf
+    Synced ~/.config/hypr/xdph.conf
+    Synced ~/.config/hypr/.luarc.json
+    Synced ~/.config/foot/foot.ini
+    Synced ~/.config/starship.toml
+============================================================
+  Backup / Export Complete!
+============================================================
+[2026-10-27 20:14:27] [INFO]  Changes detected in system state/manifests. Creating commit...
