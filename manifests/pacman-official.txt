@@ -1,5 +1,6 @@
 aether
 alsa-utils
+android-tools
 asdcontrol
 base
 bat
@@ -21,6 +22,7 @@ ffmpegthumbnailer
 foot
 gnome-disk-utility
 gnome-themes-extra
+google-chrome
 gpu-screen-recorder
 herdr
 hyprland-preview-share-picker
@@ -36,6 +38,7 @@ lazygit
 linux-omarchy
 localsend
 luarocks
+microsoft-edge-stable-bin
 mise-bin
 moonlight-qt
 mpv-mpris
