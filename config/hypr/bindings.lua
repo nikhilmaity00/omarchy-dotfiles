@@ -41,3 +41,9 @@ o.bind("ALT + A", "Volume down", "omarchy-audio-output-volume lower", { locked =
 o.bind("ALT + S", "Volume up", "omarchy-audio-output-volume raise", { locked = true, repeating = true })
 o.bind("ALT + D", "Active display brightness down", "omarchy-brightness-display 5%-", { locked = true, repeating = true })
 o.bind("ALT + F", "Active display brightness up", "omarchy-brightness-display +5%", { locked = true, repeating = true })
+-- Dictation keys from before Alt + Space and Right Alt became the defaults.
+-- Remove these lines to give the keys back to applications.
+if o.dictation_installed and o.dictation_installed() then
+  o.bind("SUPER + CTRL + X", "Toggle dictation", "omarchy-dictation toggle")
+  o.bind_hold("F9", "Start dictation (push-to-talk)", "omarchy-dictation start", "Stop dictation (push-to-talk)", "omarchy-dictation stop")
+end
