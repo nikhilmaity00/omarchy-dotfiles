@@ -905,3 +905,38 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
   Backup / Export Complete!
 ============================================================
 [2026-11-11 17:28:56] [INFO]  Changes detected in system state/manifests. Creating commit...
+[master b33ccae] Auto-backup on login (2026-11-11 17:28:56)
+ 6 files changed, 157 insertions(+), 61 deletions(-)
+[2026-11-11 17:28:56] [INFO]  Unpushed commits present. Waiting for network connectivity...
+[2026-11-11 17:29:00] [INFO]  ============================================================
+[2026-11-11 17:29:00] [INFO]    Starting Automatic Omarchy Backup & Sync
+[2026-11-11 17:29:00] [INFO]  ============================================================
+[2026-11-11 17:29:00] [INFO]  Running state export...
+============================================================
+  Starting Omarchy Automated Backup / State Export
+============================================================
+==> Exporting official Arch Linux packages...
+    Saved 96 packages to manifests/pacman-official.txt
+==> Exporting foreign / AUR packages...
+    Saved 4 AUR binary packages to manifests/aur-binaries.txt
+==> Exporting editor extensions using codium...
+    Saved 9 extensions to manifests/vscodium-extensions.txt
+==> Exporting Omarchy shell plugins...
+    Saved 11 plugins to manifests/omarchy-plugins.txt
+==> Syncing custom configurations into config/...
+    Synced ~/.config/hypr/autostart.lua
+    Synced ~/.config/hypr/bindings.lua
+    Synced ~/.config/hypr/hyprland.lua
+    Synced ~/.config/hypr/input.lua
+    Synced ~/.config/hypr/looknfeel.lua
+    Synced ~/.config/hypr/monitors.lua
+    Synced ~/.config/hypr/omasettings.lua
+    Synced ~/.config/hypr/hyprsunset.conf
+    Synced ~/.config/hypr/xdph.conf
+    Synced ~/.config/hypr/.luarc.json
+    Synced ~/.config/foot/foot.ini
+    Synced ~/.config/starship.toml
+============================================================
+  Backup / Export Complete!
+============================================================
+[2026-11-11 17:29:02] [INFO]  Changes detected in system state/manifests. Creating commit...
