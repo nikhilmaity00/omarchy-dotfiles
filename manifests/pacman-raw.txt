@@ -71,6 +71,7 @@ signed 0.3.1-1
 starship 1.27.0-1
 sushi 51.2-1
 system-config-printer 1.5.18-7
+terraform 1.15.9-1
 thermald 2:2.5.13-1
 tldr 3.4.4-1
 tobi-try 1.10.1-3

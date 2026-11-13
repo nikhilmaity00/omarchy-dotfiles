@@ -71,6 +71,7 @@ signed
 starship
 sushi
 system-config-printer
+terraform
 thermald
 tldr
 tobi-try
