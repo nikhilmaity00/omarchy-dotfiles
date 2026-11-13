@@ -16,6 +16,14 @@ log_info "============================================================"
 log_info "  Starting Automatic Omarchy Backup & Sync"
 log_info "============================================================"
 
+# Ensure only one instance of auto-backup runs concurrently
+LOCK_FILE="/tmp/omarchy-auto-backup.lock"
+exec 200>"$LOCK_FILE"
+if ! flock -n 200; then
+    log_info "Another backup process is already active. Exiting."
+    exit 0
+fi
+
 # 1. Run Export Script
 if [[ -x "$SCRIPT_DIR/export.sh" ]]; then
     log_info "Running state export..."

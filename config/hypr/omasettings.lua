@@ -3,9 +3,9 @@
 -- to hand that setting back to your own config.
 
 hl.config({
-  general = {
-    snap = {
-      enabled = true,
+  input = {
+    touchpad = {
+      natural_scroll = true,
     },
   },
 })

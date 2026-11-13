@@ -1,0 +1,168 @@
+{
+  "version": 1,
+  "idle": {
+    "screensaver": 150,
+    "lock": 300
+  },
+  "bar": {
+    "position": "top",
+    "transparent": false,
+    "centerAnchor": "omarchy.clock",
+    "layout": {
+      "left": [
+        {
+          "id": "omarchy.menu"
+        },
+        {
+          "id": "tornikegomareli.spaces",
+          "activeStyle": "subtle",
+          "animations": false,
+          "density": "compact",
+          "hideEmpty": true,
+          "labelStyle": "number",
+          "pillBackground": false,
+          "previewLive": false,
+          "previewSize": "large",
+          "showApps": "all"
+        }
+      ],
+      "center": [
+        {
+          "id": "omarchy.keyboard-layout"
+        },
+        {
+          "id": "omarchy.weather"
+        },
+        {
+          "id": "tmn73.calendar",
+          "format": "ddd d MMM HH:mm"
+        },
+        {
+          "id": "omarchy.system-update"
+        }
+      ],
+      "right": [
+        {
+          "id": "omarchy.tray"
+        },
+        {
+          "id": "io.github.tyrichards.tray",
+          "widgets": [
+            {
+              "entry": {
+                "id": "hancore.bongocat",
+                "active": false,
+                "positionLocked": true,
+                "positionX": -1,
+                "positionY": -1,
+                "catWidth": 280,
+                "keypressDuration": 100,
+                "keyboardName": "",
+                "monitorName": "",
+                "workspaceId": 0,
+                "colorMode": "default",
+                "customColor": "#f0abab"
+              },
+              "listed": true
+            },
+            {
+              "entry": {
+                "id": "io.github.twiking.omasettings"
+              },
+              "listed": true
+            },
+            {
+              "entry": {
+                "id": "omaplug",
+                "bulkUpdateScope": "verified",
+                "autoCheckUpdates": true,
+                "autoCheckIntervalHours": 6
+              },
+              "listed": true
+            },
+            {
+              "entry": {
+                "id": "tristonarmstrong.dictionary"
+              },
+              "listed": true
+            },
+            {
+              "entry": {
+                "id": "omarchy.monitor"
+              },
+              "listed": true
+            }
+          ],
+          "order": [
+            "io.github.twiking.omasettings",
+            "hancore.bongocat",
+            "tristonarmstrong.dictionary",
+            "omarchy.monitor",
+            "omaplug"
+          ]
+        },
+        {
+          "id": "tahayvr.postcard"
+        },
+        {
+          "id": "omaconnect"
+        },
+        {
+          "id": "njpatel.omapager",
+          "displayMode": "all",
+          "showCountdown": true
+        },
+        {
+          "id": "jesseburlamaque.omarchy-find"
+        },
+        {
+          "id": "agx.screen-time"
+        },
+        {
+          "id": "omarchy.agents"
+        },
+        {
+          "id": "io.github.x3me.nexthop"
+        },
+        {
+          "id": "omarchy.network"
+        },
+        {
+          "id": "omarchy.bluetooth"
+        },
+        {
+          "id": "omarchy.audio"
+        },
+        {
+          "id": "omarchy.power"
+        }
+      ]
+    }
+  },
+  "plugins": [
+    {
+      "id": "mirador"
+    },
+    {
+      "id": "turbinebmw.pip"
+    },
+    {
+      "id": "hancore.bongocat"
+    },
+    {
+      "id": "io.github.twiking.omasettings"
+    },
+    {
+      "id": "omaplug"
+    },
+    {
+      "id": "tristonarmstrong.dictionary"
+    },
+    {
+      "id": "omarchy.monitor"
+    }
+  ],
+  "disabledPlugins": [
+    "omarchy.notifications"
+  ]
+}
