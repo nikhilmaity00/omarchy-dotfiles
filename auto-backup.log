@@ -1075,3 +1075,69 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
   Backup / Export Complete!
 ============================================================
 [2026-11-13 19:52:23] [INFO]  Changes detected in system state/manifests. Creating commit...
+[master 160043c] Auto-backup on login (2026-11-13 19:52:23)
+ 27 files changed, 2597 insertions(+), 353 deletions(-)
+ create mode 100644 config/hypr/omacontrol.lua
+ create mode 100644 config/hypr/workspaces.lua
+ create mode 100644 config/omarchy/omacontrol.json
+ create mode 100644 config/omarchy/plugins/custom.agent-usage/Agent.qml
+ create mode 100644 config/omarchy/plugins/custom.agent-usage/Main.qml
+ create mode 100644 config/omarchy/plugins/custom.agent-usage/Panel.qml
+ create mode 100644 config/omarchy/plugins/custom.agent-usage/README.md
+ create mode 100644 config/omarchy/plugins/custom.agent-usage/assets/claude.svg
+ create mode 100644 config/omarchy/plugins/custom.agent-usage/assets/codex-light.svg
+ create mode 100644 config/omarchy/plugins/custom.agent-usage/assets/codex.svg
+ create mode 100644 config/omarchy/plugins/custom.agent-usage/assets/fireworks.svg
+ create mode 100644 config/omarchy/plugins/custom.agent-usage/assets/gemini-light.svg
+ create mode 100644 config/omarchy/plugins/custom.agent-usage/assets/gemini.svg
+ create mode 100755 config/omarchy/plugins/custom.agent-usage/install.sh
+ create mode 100644 config/omarchy/plugins/custom.agent-usage/manifest.json
+ create mode 100755 config/omarchy/plugins/custom.agent-usage/uninstall.sh
+ delete mode 100644 config/omarchy/plugins/nikhil.workspaces/Workspaces.qml.bak.1791257677
+[2026-11-13 19:52:23] [INFO]  Unpushed commits present. Waiting for network connectivity...
+[2026-11-13 19:52:23] [INFO]  Network available. Pushing updates to remote repository...
+To https://github.com/nikhilmaity00/omarchy-dotfiles.git
+   d6db5e7..160043c  master -> master
+[2026-11-13 19:52:25] [INFO]  Successfully pushed backup to remote repository (master).
+[2026-11-13 19:52:25] [INFO]  ============================================================
+[2026-11-13 19:52:25] [INFO]    Auto-Backup Complete
+[2026-11-13 19:52:25] [INFO]  ============================================================
+[2026-11-13 19:53:22] [INFO]  ============================================================
+[2026-11-13 19:53:22] [INFO]    Starting Automatic Omarchy Backup & Sync
+[2026-11-13 19:53:22] [INFO]  ============================================================
+[2026-11-13 19:53:22] [INFO]  Running state export...
+============================================================
+  Starting Omarchy Automated Backup / State Export
+============================================================
+==> Exporting official Arch Linux packages...
+    Saved 96 packages to manifests/pacman-official.txt
+==> Exporting foreign / AUR packages...
+    Saved 4 AUR binary packages to manifests/aur-binaries.txt
+==> Exporting editor extensions using codium...
+    Saved 9 extensions to manifests/vscodium-extensions.txt
+==> Exporting Omarchy shell plugins...
+    Saved 12 plugins to manifests/omarchy-plugins.txt
+==> Syncing custom configurations into config/...
+    Synced ~/.config/hypr/autostart.lua
+    Synced ~/.config/hypr/bindings.lua
+    Synced ~/.config/hypr/hyprland.lua
+    Synced ~/.config/hypr/input.lua
+    Synced ~/.config/hypr/looknfeel.lua
+    Synced ~/.config/hypr/monitors.lua
+    Synced ~/.config/hypr/omacontrol.lua
+    Synced ~/.config/hypr/workspaces.lua
+    Synced ~/.config/hypr/hyprsunset.conf
+    Synced ~/.config/hypr/xdph.conf
+    Synced ~/.config/hypr/.luarc.json
+    Synced ~/.config/foot/foot.ini
+    Synced ~/.config/starship.toml
+    Synced ~/.config/omarchy/shell.json
+    Synced ~/.config/omarchy/omacontrol.json
+    Synced local Omarchy plugin: custom.agent-usage
+    Synced local Omarchy plugin: nikhil.workspaces
+    Synced omarchy-dotfiles-backup.service
+    Synced omarchy-dotfiles-backup.timer
+============================================================
+  Backup / Export Complete!
+============================================================
+[2026-11-13 19:53:23] [INFO]  Changes detected in system state/manifests. Creating commit...

@@ -1,5 +1,6 @@
 [Unit]
-Description=Omarchy Dotfiles Automatic State Backup & Push
+Description=Omarchy Dotfiles Automated Backup & Sync
+Documentation=https://github.com/nikhilmaity00/omarchy-dotfiles
 After=network-online.target
 Wants=network-online.target
 
@@ -8,6 +9,8 @@ Type=oneshot
 ExecStart=/home/nikhil/Projects/omarchy-dotfiles/auto-backup.sh
 StandardOutput=journal
 StandardError=journal
+Nice=19
+CPUSchedulingPolicy=idle
 
 [Install]
 WantedBy=default.target

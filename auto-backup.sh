@@ -65,6 +65,7 @@ if [[ -n "$UNPUSHED" ]]; then
     if [[ "$CONNECTED" == true ]]; then
         log_info "Network available. Pushing updates to remote repository..."
         BRANCH=$(git rev-parse --abbrev-ref HEAD)
+        git pull --rebase origin "$BRANCH" >> "$LOG_FILE" 2>&1 || true
         if git push origin "$BRANCH" >> "$LOG_FILE" 2>&1; then
             log_info "Successfully pushed backup to remote repository ($BRANCH)."
         else
