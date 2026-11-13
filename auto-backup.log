@@ -940,3 +940,64 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
   Backup / Export Complete!
 ============================================================
 [2026-11-11 17:29:02] [INFO]  Changes detected in system state/manifests. Creating commit...
+[master 959eb06] Auto-backup on login (2026-11-11 17:29:02)
+ 1 file changed, 35 insertions(+)
+[2026-11-11 17:29:02] [INFO]  Unpushed commits present. Waiting for network connectivity...
+[2026-11-11 17:29:03] [INFO]  Network available. Pushing updates to remote repository...
+To https://github.com/nikhilmaity00/omarchy-dotfiles.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/nikhilmaity00/omarchy-dotfiles.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[2026-11-11 17:29:04] [ERROR] Failed to push backup to remote repository.
+[2026-11-11 17:29:04] [INFO]  ============================================================
+[2026-11-11 17:29:04] [INFO]    Auto-Backup Complete
+[2026-11-11 17:29:04] [INFO]  ============================================================
+[2026-11-11 17:29:06] [INFO]  Network available. Pushing updates to remote repository...
+To https://github.com/nikhilmaity00/omarchy-dotfiles.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/nikhilmaity00/omarchy-dotfiles.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[2026-11-11 17:29:07] [ERROR] Failed to push backup to remote repository.
+[2026-11-11 17:29:07] [INFO]  ============================================================
+[2026-11-11 17:29:07] [INFO]    Auto-Backup Complete
+[2026-11-11 17:29:07] [INFO]  ============================================================
+[2026-11-13 13:26:09] [INFO]  ============================================================
+[2026-11-13 13:26:09] [INFO]    Starting Automatic Omarchy Backup & Sync
+[2026-11-13 13:26:09] [INFO]  ============================================================
+[2026-11-13 13:26:09] [INFO]  Running state export...
+============================================================
+  Starting Omarchy Automated Backup / State Export
+============================================================
+==> Exporting official Arch Linux packages...
+    Saved 96 packages to manifests/pacman-official.txt
+==> Exporting foreign / AUR packages...
+    Saved 4 AUR binary packages to manifests/aur-binaries.txt
+==> Exporting editor extensions using codium...
+    Saved 9 extensions to manifests/vscodium-extensions.txt
+==> Exporting Omarchy shell plugins...
+    Saved 11 plugins to manifests/omarchy-plugins.txt
+==> Syncing custom configurations into config/...
+    Synced ~/.config/hypr/autostart.lua
+    Synced ~/.config/hypr/bindings.lua
+    Synced ~/.config/hypr/hyprland.lua
+    Synced ~/.config/hypr/input.lua
+    Synced ~/.config/hypr/looknfeel.lua
+    Synced ~/.config/hypr/monitors.lua
+    Synced ~/.config/hypr/omasettings.lua
+    Synced ~/.config/hypr/hyprsunset.conf
+    Synced ~/.config/hypr/xdph.conf
+    Synced ~/.config/hypr/.luarc.json
+    Synced ~/.config/foot/foot.ini
+    Synced ~/.config/starship.toml
+============================================================
+  Backup / Export Complete!
+============================================================
+[2026-11-13 13:26:10] [INFO]  Changes detected in system state/manifests. Creating commit...
