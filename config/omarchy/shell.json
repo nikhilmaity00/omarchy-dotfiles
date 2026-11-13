@@ -6,39 +6,22 @@
   },
   "bar": {
     "position": "top",
-    "transparent": false,
-    "centerAnchor": "omarchy.clock",
+    "transparent": true,
     "layout": {
       "left": [
         {
           "id": "omarchy.menu"
         },
         {
-          "id": "tornikegomareli.spaces",
-          "activeStyle": "subtle",
-          "animations": false,
-          "density": "compact",
-          "hideEmpty": true,
-          "labelStyle": "number",
-          "pillBackground": false,
-          "previewLive": false,
-          "previewSize": "large",
-          "showApps": "all"
+          "id": "nikhil.workspaces"
         }
       ],
       "center": [
         {
-          "id": "omarchy.keyboard-layout"
-        },
-        {
-          "id": "omarchy.weather"
-        },
-        {
-          "id": "tmn73.calendar",
-          "format": "ddd d MMM HH:mm"
-        },
-        {
-          "id": "omarchy.system-update"
+          "id": "omarchy.clock",
+          "format": "dddd HH:mm",
+          "formatAlt": "d MMMM 'W'ww yyyy",
+          "verticalFormat": "HH\n—\nmm"
         }
       ],
       "right": [
@@ -46,86 +29,50 @@
           "id": "omarchy.tray"
         },
         {
-          "id": "io.github.tyrichards.tray",
-          "widgets": [
-            {
-              "entry": {
-                "id": "hancore.bongocat",
-                "active": false,
-                "positionLocked": true,
-                "positionX": -1,
-                "positionY": -1,
-                "catWidth": 280,
-                "keypressDuration": 100,
-                "keyboardName": "",
-                "monitorName": "",
-                "workspaceId": 0,
-                "colorMode": "default",
-                "customColor": "#f0abab"
-              },
-              "listed": true
-            },
-            {
-              "entry": {
-                "id": "io.github.twiking.omasettings"
-              },
-              "listed": true
-            },
-            {
-              "entry": {
-                "id": "omaplug",
-                "bulkUpdateScope": "verified",
-                "autoCheckUpdates": true,
-                "autoCheckIntervalHours": 6
-              },
-              "listed": true
-            },
-            {
-              "entry": {
-                "id": "tristonarmstrong.dictionary"
-              },
-              "listed": true
-            },
-            {
-              "entry": {
-                "id": "omarchy.monitor"
-              },
-              "listed": true
-            }
-          ],
-          "order": [
-            "io.github.twiking.omasettings",
-            "hancore.bongocat",
-            "tristonarmstrong.dictionary",
-            "omarchy.monitor",
-            "omaplug"
-          ]
+          "id": "omarchy.keyboard-layout"
         },
         {
-          "id": "tahayvr.postcard"
-        },
-        {
-          "id": "omaconnect"
-        },
-        {
-          "id": "njpatel.omapager",
-          "displayMode": "all",
-          "showCountdown": true
-        },
-        {
-          "id": "jesseburlamaque.omarchy-find"
-        },
-        {
-          "id": "agx.screen-time"
-        },
-        {
-          "id": "omarchy.agents"
+          "id": "custom.agent-usage"
         },
         {
           "id": "io.github.x3me.nexthop"
         },
         {
-          "id": "omarchy.network"
+          "id": "tristonarmstrong.dictionary"
+        },
+        {
+          "id": "jesseburlamaque.omarchy-find"
+        },
+        {
+          "id": "omaplug",
+          "autoCheckUpdates": true,
+          "autoCheckIntervalHours": 24
+        },
+        {
+          "id": "jankeesvw.notification-center"
+        },
+        {
+          "id": "io.github.twiking.omacontrol"
+        },
+        {
+          "id": "hancore.bongocat",
+          "active": false,
+          "positionLocked": true,
+          "positionX": 702,
+          "positionY": 806,
+          "catWidth": 140,
+          "keypressDuration": 100,
+          "keyboardName": "",
+          "monitorName": "",
+          "workspaceId": 0,
+          "colorMode": "theme",
+          "customColor": "#f0abab"
+        },
+        {
+          "id": "agx.screen-time"
+        },
+        {
+          "id": "omaconnect"
         },
         {
           "id": "omarchy.bluetooth"
@@ -134,9 +81,55 @@
           "id": "omarchy.audio"
         },
         {
-          "id": "omarchy.power"
+          "id": "omarchy.network"
+        },
+        {
+          "id": "omarchy.monitor"
+        },
+        {
+          "id": "omarchy.power",
+          "showPercentage": true
         }
-      ]
+      ],
+      "centerBegin": [
+        {
+          "id": "omarchy.indicators"
+        }
+      ],
+      "centerEnd": [
+        {
+          "id": "omarchy.elsewhen",
+          "cities": [
+            {
+              "name": "Kolkata",
+              "zone": "Asia/Kolkata"
+            },
+            {
+              "name": "Tokyo",
+              "zone": "Asia/Tokyo"
+            },
+            {
+              "name": "Los Angeles",
+              "zone": "America/Los_Angeles"
+            },
+            {
+              "name": "New York",
+              "zone": "America/New_York"
+            },
+            {
+              "name": "London",
+              "zone": "Europe/London"
+            }
+          ]
+        },
+        {
+          "id": "omarchy.weather"
+        },
+        {
+          "id": "omarchy.system-update"
+        }
+      ],
+      "tray": []
     }
   },
   "plugins": [
@@ -145,24 +138,9 @@
     },
     {
       "id": "turbinebmw.pip"
-    },
-    {
-      "id": "hancore.bongocat"
-    },
-    {
-      "id": "io.github.twiking.omasettings"
-    },
-    {
-      "id": "omaplug"
-    },
-    {
-      "id": "tristonarmstrong.dictionary"
-    },
-    {
-      "id": "omarchy.monitor"
     }
   ],
   "disabledPlugins": [
-    "omarchy.notifications"
+    "omarchy.disk-speedtest"
   ]
 }

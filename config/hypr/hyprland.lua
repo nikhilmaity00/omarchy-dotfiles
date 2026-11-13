@@ -3,6 +3,9 @@
 -- Omarchy's bootstrap keeps path setup out of this user config.
 dofile((os.getenv("OMARCHY_PATH") or "/usr/share/omarchy") .. "/default/hypr/bootstrap.lua")
 
+-- Custom workspace manager (odd on laptop, even on external; all on laptop when standalone)
+package.loaded["default.hypr.monitor-workspaces"] = require("hypr.workspaces")
+
 -- Disable all Omarchy default bindings. Add your own in hypr/bindings.lua.
 -- omarchy_default_bindings = false
 --
@@ -22,11 +25,15 @@ require("hypr.bindings")
 require("hypr.looknfeel")
 require("hypr.autostart")
 
+-- Load settings written by OmaControl (omacontrol:managed).
+-- It belongs above the toggles below: those turn the laptop
+-- display off with a monitor rule, and a rule of ours read
+-- afterwards would replace it and put the display back on.
+require("hypr.omacontrol")
+
 -- Toggle config flags dynamically.
 require("default.hypr.toggles")
 
 -- Add any other personal Hyprland configuration below.
 -- o.window("qemu", { workspace = "5" })
 
--- Load settings written by OmaSettings (omasettings:managed).
-require("hypr.omasettings")

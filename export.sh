@@ -103,7 +103,7 @@ echo "==> Syncing custom configurations into config/..."
 mkdir -p "$CONFIG_DIR/hypr"
 
 # Copy Hyprland custom configurations if present
-HYPR_FILES=("autostart.lua" "bindings.lua" "hyprland.lua" "input.lua" "looknfeel.lua" "monitors.lua" "omasettings.lua" "hyprsunset.conf" "xdph.conf" ".luarc.json")
+HYPR_FILES=("autostart.lua" "bindings.lua" "hyprland.lua" "input.lua" "looknfeel.lua" "monitors.lua" "omasettings.lua" "omacontrol.lua" "workspaces.lua" "hyprsunset.conf" "xdph.conf" ".luarc.json")
 for file in "${HYPR_FILES[@]}"; do
     if [[ -f "$HOME/.config/hypr/$file" ]]; then
         cp -f "$HOME/.config/hypr/$file" "$CONFIG_DIR/hypr/$file"
@@ -137,6 +137,7 @@ if [[ -d "$HOME/.config/omarchy" ]]; then
     mkdir -p "$CONFIG_DIR/omarchy"
     [[ -f "$HOME/.config/omarchy/shell.json" ]] && cp -f "$HOME/.config/omarchy/shell.json" "$CONFIG_DIR/omarchy/shell.json" && echo "    Synced ~/.config/omarchy/shell.json"
     [[ -f "$HOME/.config/omarchy/omasettings.json" ]] && cp -f "$HOME/.config/omarchy/omasettings.json" "$CONFIG_DIR/omarchy/omasettings.json" && echo "    Synced ~/.config/omarchy/omasettings.json"
+    [[ -f "$HOME/.config/omarchy/omacontrol.json" ]] && cp -f "$HOME/.config/omarchy/omacontrol.json" "$CONFIG_DIR/omarchy/omacontrol.json" && echo "    Synced ~/.config/omarchy/omacontrol.json"
 
     # Sync local custom plugins (those without .git)
     if [[ -d "$PLUGINS_DIR" ]]; then
@@ -145,6 +146,7 @@ if [[ -d "$HOME/.config/omarchy" ]]; then
                 pname=$(basename "$dir")
                 mkdir -p "$CONFIG_DIR/omarchy/plugins/$pname"
                 cp -rf "$dir/." "$CONFIG_DIR/omarchy/plugins/$pname/"
+                find "$CONFIG_DIR/omarchy/plugins/$pname" -name "*.bak*" -delete
                 echo "    Synced local Omarchy plugin: $pname"
             fi
         done

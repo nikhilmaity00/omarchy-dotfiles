@@ -41,7 +41,6 @@ intel-ucode
 kdenlive
 lazydocker
 lazygit
-libva-nvidia-driver
 linux-omarchy
 localsend
 luarocks
@@ -51,7 +50,6 @@ monologue
 moonlight-qt
 mpv-mpris
 networkmanager
-nvidia-open-dkms
 obs-studio
 obsidian
 omacalc
@@ -68,11 +66,9 @@ owe-lockfeed
 pamixer
 pinta
 python-poetry-core
-python-recurring-ical-events
 python-uv
 signed
 starship
-supergfxctl
 sushi
 system-config-printer
 thermald

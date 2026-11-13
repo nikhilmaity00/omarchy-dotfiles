@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "custom.agent-usage",
+  "name": "Agents (Multi-Icon Usage)",
+  "version": "1.5.0",
+  "author": "Nikhil / Omarchy Custom",
+  "license": "MIT",
+  "description": "Multi-agent top bar indicator displaying active agent icons and utilized percentages alongside the Omarchy Agents dashboard.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "activation": "on-demand",
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Agents",
+    "description": "Multi-agent icons with rate-limit percentages on the top bar and full agent usage dashboard panel.",
+    "category": "AI",
+    "aliases": ["agents", "agent-usage", "model-usage"],
+    "allowMultiple": false,
+    "defaults": {
+      "barMode": "multi",
+      "showPercentage": true,
+      "providers": {
+        "claude": { "enabled": true },
+        "codex": { "enabled": true },
+        "fireworks": { "enabled": true },
+        "gemini": { "enabled": true }
+      },
+      "refreshIntervalSec": 900,
+      "syncMode": "Off",
+      "syncDir": "",
+      "syncFileName": "",
+      "syncDeviceId": ""
+    },
+    "schema": [
+      { "key": "barMode", "type": "enum", "label": "Bar Mode", "options": ["multi", "single"], "defaultValue": "multi", "description": "Display every active in-use agent icon with percentage in the top bar, or a single icon." },
+      { "key": "showPercentage", "type": "boolean", "label": "Show Percentage", "defaultValue": true, "description": "Display utilized percentage badge next to each agent icon in the top bar." },
+      { "key": "refreshIntervalSec", "type": "integer", "label": "Refresh interval (seconds)", "min": 30, "max": 3600, "step": 30, "defaultValue": 900 }
+    ]
+  },
+  "omarchy": {
+    "clonedFrom": "omarchy.agents"
+  }
+}
