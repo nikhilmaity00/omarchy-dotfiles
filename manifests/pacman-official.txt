@@ -2,6 +2,7 @@ aether
 alsa-utils
 android-tools
 asdcontrol
+azure-cli
 base
 bat
 bluez-utils
