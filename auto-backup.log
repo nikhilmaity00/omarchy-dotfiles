@@ -1961,3 +1961,54 @@ To https://github.com/nikhilmaity00/omarchy-dotfiles.git
   Backup / Export Complete!
 ============================================================
 [2026-11-18 22:48:36] [INFO]  Changes detected in system state/manifests. Creating commit...
+[master 924c709] Auto-backup on login (2026-11-18 22:48:36)
+ 1 file changed, 51 insertions(+)
+[2026-11-18 22:48:36] [INFO]  Unpushed commits present. Waiting for network connectivity...
+[2026-11-18 22:48:36] [INFO]  Network available. Pushing updates to remote repository...
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+To https://github.com/nikhilmaity00/omarchy-dotfiles.git
+   d2c6b9c..924c709  master -> master
+[2026-11-18 22:48:38] [INFO]  Successfully pushed backup to remote repository (master).
+[2026-11-18 22:48:38] [INFO]  ============================================================
+[2026-11-18 22:48:38] [INFO]    Auto-Backup Complete
+[2026-11-18 22:48:38] [INFO]  ============================================================
+[2026-11-19 00:49:34] [INFO]  ============================================================
+[2026-11-19 00:49:34] [INFO]    Starting Automatic Omarchy Backup & Sync
+[2026-11-19 00:49:34] [INFO]  ============================================================
+[2026-11-19 00:49:34] [INFO]  Running state export...
+============================================================
+  Starting Omarchy Automated Backup / State Export
+============================================================
+==> Exporting official Arch Linux packages...
+    Saved 98 packages to manifests/pacman-official.txt
+==> Exporting foreign / AUR packages...
+    Saved 4 AUR binary packages to manifests/aur-binaries.txt
+==> Exporting editor extensions using codium...
+    Saved 9 extensions to manifests/vscodium-extensions.txt
+==> Exporting Omarchy shell plugins...
+    Saved 12 plugins to manifests/omarchy-plugins.txt
+==> Syncing custom configurations into config/...
+    Synced ~/.config/hypr/autostart.lua
+    Synced ~/.config/hypr/bindings.lua
+    Synced ~/.config/hypr/hyprland.lua
+    Synced ~/.config/hypr/input.lua
+    Synced ~/.config/hypr/looknfeel.lua
+    Synced ~/.config/hypr/monitors.lua
+    Synced ~/.config/hypr/omacontrol.lua
+    Synced ~/.config/hypr/workspaces.lua
+    Synced ~/.config/hypr/hyprsunset.conf
+    Synced ~/.config/hypr/xdph.conf
+    Synced ~/.config/hypr/.luarc.json
+    Synced ~/.config/foot/foot.ini
+    Synced ~/.config/starship.toml
+    Synced ~/.config/omarchy/shell.json
+    Synced ~/.config/omarchy/omacontrol.json
+    Synced local Omarchy plugin: custom.agent-usage
+    Synced local Omarchy plugin: nikhil.workspaces
+    Synced omarchy-dotfiles-backup.service
+    Synced omarchy-dotfiles-backup.timer
+============================================================
+  Backup / Export Complete!
+============================================================
+[2026-11-19 00:49:36] [INFO]  Changes detected in system state/manifests. Creating commit...
