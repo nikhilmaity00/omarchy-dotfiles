@@ -10,3 +10,11 @@ hl.config({
   },
 })
 
+hl.monitor({
+  output = "desc:LG Display 0x05F3",
+  mode = "1920x1080@60.02",
+  scale = 1,
+  transform = 0,
+  vrr = 0,
+})
+

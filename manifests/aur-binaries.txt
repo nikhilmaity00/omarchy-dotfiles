@@ -1,4 +1,0 @@
-ai-usagebar-bin
-remmina-git
-sonora-bin
-vscodium-bin
