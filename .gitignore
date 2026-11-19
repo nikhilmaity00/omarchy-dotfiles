@@ -1,0 +1,5 @@
+install.log
+auto-backup.log
+*.log
+*.tmp
+*.lock
