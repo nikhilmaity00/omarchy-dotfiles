@@ -8,6 +8,7 @@ bat 0.26.1-3
 bluez-utils 5.87-2
 bolt 0.9.11-3
 brave-bin 1:1.100.58-1
+brave-origin-bin 1:1.100.58-1
 brightnessctl 0.5.1-3
 btop 1.4.7-1
 chromium 155.0.8059.84-1

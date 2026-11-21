@@ -8,6 +8,7 @@ bat
 bluez-utils
 bolt
 brave-bin
+brave-origin-bin
 brightnessctl
 btop
 chromium

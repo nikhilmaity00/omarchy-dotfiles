@@ -29,16 +29,14 @@
           "id": "omarchy.tray"
         },
         {
-          "id": "bt.codecs"
-        },
-        {
           "id": "omarchy.keyboard-layout"
         },
         {
           "id": "custom.agent-usage"
         },
         {
-          "id": "io.github.x3me.nexthop"
+          "id": "io.github.x3me.nexthop",
+          "updateCheck": false
         },
         {
           "id": "tristonarmstrong.dictionary"
@@ -76,6 +74,9 @@
         },
         {
           "id": "omaconnect"
+        },
+        {
+          "id": "bt.codecs"
         },
         {
           "id": "omarchy.bluetooth"
