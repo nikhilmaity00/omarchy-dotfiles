@@ -12,6 +12,16 @@ log_info()  { echo "[$(date '+%Y-%m-%d %H:%M:%S')] [INFO]  $1" | tee -a "$LOG_FI
 log_warn()  { echo "[$(date '+%Y-%m-%d %H:%M:%S')] [WARN]  $1" | tee -a "$LOG_FILE"; }
 log_error() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] [ERROR] $1" | tee -a "$LOG_FILE"; }
 
+notify_user() {
+    local urgency="${1:-normal}"
+    local title="$2"
+    local msg="$3"
+    if command -v notify-send &>/dev/null; then
+        local bus_addr="${DBUS_SESSION_BUS_ADDRESS:-unix:path=/run/user/${UID:-1000}/bus}"
+        DBUS_SESSION_BUS_ADDRESS="$bus_addr" notify-send -u "$urgency" -a "Omarchy Backup" "$title" "$msg" 2>/dev/null || true
+    fi
+}
+
 log_info "============================================================"
 log_info "  Starting Automatic Omarchy Backup & Sync"
 log_info "============================================================"
@@ -68,11 +78,14 @@ if [[ -n "$UNPUSHED" ]]; then
         git pull --rebase origin "$BRANCH" >> "$LOG_FILE" 2>&1 || true
         if git push origin "$BRANCH" >> "$LOG_FILE" 2>&1; then
             log_info "Successfully pushed backup to remote repository ($BRANCH)."
+            notify_user "low" "Omarchy Backup" "System state backed up and synced to GitHub ($BRANCH)."
         else
             log_error "Failed to push backup to remote repository."
+            notify_user "critical" "Omarchy Backup" "Failed to push updates to GitHub. Check auto-backup.log"
         fi
     else
         log_warn "Network unavailable after timeout. Commit saved locally and will be pushed on next login."
+        notify_user "normal" "Omarchy Backup" "Offline: Backup committed locally. Will push when network connects."
     fi
 else
     log_info "Remote repository is already up to date."

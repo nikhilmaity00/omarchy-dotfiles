@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Trigger Omarchy dotfiles backup on desktop logon
+if [[ -x "$HOME/Projects/omarchy-dotfiles/auto-backup.sh" ]]; then
+    "$HOME/Projects/omarchy-dotfiles/auto-backup.sh" >/dev/null 2>&1 &
+elif [[ -x "$HOME/.local/share/omarchy-dotfiles/auto-backup.sh" ]]; then
+    "$HOME/.local/share/omarchy-dotfiles/auto-backup.sh" >/dev/null 2>&1 &
+fi

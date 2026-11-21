@@ -51,13 +51,18 @@ chmod +x install.sh export.sh
 
 ---
 
-## 🛠️ Restoration Features
+## 🛠️ Restoration & Automation Features
 
+- **Automated Backup on Logon & Event Triggers:**
+  - **At Logon:** Systemd user unit (`omarchy-dotfiles-backup.service` via `default.target`) and Omarchy post-boot hook (`~/.config/omarchy/hooks/post-boot.d/omarchy-dotfiles-backup`) run automatically on user login.
+  - **Periodic Sync:** Systemd timer (`omarchy-dotfiles-backup.timer`) runs every 2 hours with persistent wakeup catchup.
+  - **Post-Update:** Omarchy post-update hook (`~/.config/omarchy/hooks/post-update.d/omarchy-dotfiles-backup`) immediately backs up manifests after `omarchy update`.
+  - **Lock Guard:** `flock` ensures concurrency protection across triggers.
+  - **Desktop Toast:** Sends visual desktop notifications via `notify-send`.
 - **Zero-Compile Fast Package Installation:** Restores official packages and AUR binaries using `--needed --noconfirm`. Includes itemized fallback if a specific package name changes.
-- **Hardware Abstraction:** Auto-detects connected laptop display outputs (via `hyprctl` or `/sys/class/drm/`) and generates `~/.config/hypr/monitors.conf`.
-- **Omarchy Plugin Restoration:** Automatically clones and enables all git-managed Omarchy shell plugins and widgets.
+- **Hardware Abstraction:** Preserves user monitor rules and generates dynamic fallbacks in `~/.config/hypr/monitors.lua`.
+- **Headless-Safe Omarchy Plugin Restoration:** Clones third-party shell plugins and widgets directly into `~/.config/omarchy/plugins/` without GUI IPC bottlenecks.
 - **Systemd & Permissions Automation:** Enables essential daemons (`bluetooth`, `cups`, `docker`, `avahi`, `pipewire`) and adds your user to required system groups (`docker`, `video`, `input`).
-- **Chezmoi Integration:** Applies Chezmoi dotfiles if initialized on the machine.
 - **Execution Logging:** Records restoration steps and warnings to `install.log`.
 
 ---

@@ -112,12 +112,14 @@ for file in "${HYPR_FILES[@]}"; do
 done
 
 
-# Copy Foot terminal config if present
-if [[ -f "$HOME/.config/foot/foot.ini" ]]; then
-    mkdir -p "$CONFIG_DIR/foot"
-    cp -f "$HOME/.config/foot/foot.ini" "$CONFIG_DIR/foot/foot.ini"
-    echo "    Synced ~/.config/foot/foot.ini"
-fi
+# Copy Terminal configurations if present (Omarchy supports Alacritty, Foot, Ghostty, Kitty)
+for term in alacritty foot ghostty kitty; do
+    if [[ -d "$HOME/.config/$term" ]]; then
+        mkdir -p "$CONFIG_DIR/$term"
+        cp -rf "$HOME/.config/$term/." "$CONFIG_DIR/$term/"
+        echo "    Synced ~/.config/$term/"
+    fi
+done
 
 # Copy Starship config if present
 if [[ -f "$HOME/.config/starship.toml" ]]; then
@@ -132,12 +134,42 @@ if [[ -d "$HOME/.config/fastfetch" ]]; then
     echo "    Synced ~/.config/fastfetch/"
 fi
 
-# Copy Omarchy shell and user settings if present
+# Copy btop and lazygit configs if present
+for app in btop lazygit; do
+    if [[ -d "$HOME/.config/$app" ]]; then
+        mkdir -p "$CONFIG_DIR/$app"
+        cp -rf "$HOME/.config/$app/." "$CONFIG_DIR/$app/"
+        echo "    Synced ~/.config/$app/"
+    fi
+done
+
+# Copy Omarchy shell, user settings, themes and hooks if present
 if [[ -d "$HOME/.config/omarchy" ]]; then
     mkdir -p "$CONFIG_DIR/omarchy"
     [[ -f "$HOME/.config/omarchy/shell.json" ]] && cp -f "$HOME/.config/omarchy/shell.json" "$CONFIG_DIR/omarchy/shell.json" && echo "    Synced ~/.config/omarchy/shell.json"
     [[ -f "$HOME/.config/omarchy/omasettings.json" ]] && cp -f "$HOME/.config/omarchy/omasettings.json" "$CONFIG_DIR/omarchy/omasettings.json" && echo "    Synced ~/.config/omarchy/omasettings.json"
     [[ -f "$HOME/.config/omarchy/omacontrol.json" ]] && cp -f "$HOME/.config/omarchy/omacontrol.json" "$CONFIG_DIR/omarchy/omacontrol.json" && echo "    Synced ~/.config/omarchy/omacontrol.json"
+
+    # Sync custom themes
+    if [[ -d "$HOME/.config/omarchy/themes" ]]; then
+        mkdir -p "$CONFIG_DIR/omarchy/themes"
+        cp -rf "$HOME/.config/omarchy/themes/." "$CONFIG_DIR/omarchy/themes/"
+        echo "    Synced ~/.config/omarchy/themes/"
+    fi
+
+    # Sync custom hooks
+    if [[ -d "$HOME/.config/omarchy/hooks" ]]; then
+        mkdir -p "$CONFIG_DIR/omarchy/hooks"
+        cp -rf "$HOME/.config/omarchy/hooks/." "$CONFIG_DIR/omarchy/hooks/"
+        echo "    Synced ~/.config/omarchy/hooks/"
+    fi
+
+    # Sync menu extensions
+    if [[ -d "$HOME/.config/omarchy/extensions" ]]; then
+        mkdir -p "$CONFIG_DIR/omarchy/extensions"
+        cp -rf "$HOME/.config/omarchy/extensions/." "$CONFIG_DIR/omarchy/extensions/"
+        echo "    Synced ~/.config/omarchy/extensions/"
+    fi
 
     # Sync local custom plugins (those without .git)
     if [[ -d "$PLUGINS_DIR" ]]; then

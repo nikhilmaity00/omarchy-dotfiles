@@ -7,11 +7,11 @@ base
 bat
 bluez-utils
 bolt
+brave-bin
 brightnessctl
 btop
 chromium
 cliamp
-cups
 ddcutil
 disktree-bin
 docker-compose

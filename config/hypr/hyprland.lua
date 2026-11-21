@@ -37,3 +37,7 @@ require("default.hypr.toggles")
 -- Add any other personal Hyprland configuration below.
 -- o.window("qemu", { workspace = "5" })
 
+
+-- Prevent picture-in-picture windows from stealing focus on spawn/activation
+o.window({ tag = "pip" }, { no_initial_focus = true, focus_on_activate = false })
+o.window({ title = "(Picture.?in.?[Pp]icture)" }, { no_initial_focus = true, focus_on_activate = false })

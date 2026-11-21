@@ -13,9 +13,6 @@
           "id": "omarchy.menu"
         },
         {
-          "id": "nikhil.workspaces"
-        },
-        {
           "id": "tornikegomareli.spaces"
         }
       ],
@@ -30,6 +27,9 @@
       "right": [
         {
           "id": "omarchy.tray"
+        },
+        {
+          "id": "bt.codecs"
         },
         {
           "id": "omarchy.keyboard-layout"
@@ -107,24 +107,19 @@
           "id": "omarchy.elsewhen",
           "cities": [
             {
-              "name": "Kolkata",
-              "zone": "Asia/Kolkata"
+              "name": "Israel",
+              "zone": "Asia/Jerusalem",
+              "lat": 31.5,
+              "lon": 34.75,
+              "region": "IL"
             },
             {
-              "name": "Tokyo",
-              "zone": "Asia/Tokyo"
+              "name": "Singapore",
+              "zone": "Asia/Singapore"
             },
             {
-              "name": "Los Angeles",
-              "zone": "America/Los_Angeles"
-            },
-            {
-              "name": "New York",
-              "zone": "America/New_York"
-            },
-            {
-              "name": "London",
-              "zone": "Europe/London"
+              "name": "Jakarta",
+              "zone": "Asia/Jakarta"
             }
           ]
         },

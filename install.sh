@@ -388,12 +388,33 @@ if [[ "$ENABLE_SYSTEMD" == true ]]; then
         command -v dockerd &>/dev/null    && sudo systemctl enable --now docker.socket 2>/dev/null || true
         command -v avahi-daemon &>/dev/null && sudo systemctl enable --now avahi-daemon.service 2>/dev/null || true
 
-        # User daemons
+        # User daemons & Logon Auto-Backup
         systemctl --user enable --now pipewire.service wireplumber.service 2>/dev/null || true
-        if [[ -f "$HOME/.config/systemd/user/omarchy-dotfiles-backup.timer" ]]; then
+        if [[ -f "$HOME/.config/systemd/user/omarchy-dotfiles-backup.service" ]]; then
             systemctl --user daemon-reload 2>/dev/null || true
+            # Enable service to run automatically on logon (default.target)
+            systemctl --user enable omarchy-dotfiles-backup.service 2>/dev/null || true
+            # Enable timer for periodic 2-hour backup runs
             systemctl --user enable --now omarchy-dotfiles-backup.timer 2>/dev/null || true
-            log_info "Enabled automated dotfiles backup timer."
+            log_info "Enabled automated dotfiles backup at logon (service) and periodic 2-hour sync (timer)."
+        fi
+
+        # Install Omarchy desktop hooks for logon and post-update backup
+        if [[ -d "$HOME/.config/omarchy" ]]; then
+            mkdir -p "$HOME/.config/omarchy/hooks/post-boot.d" "$HOME/.config/omarchy/hooks/post-update.d"
+            cat > "$HOME/.config/omarchy/hooks/post-boot.d/omarchy-dotfiles-backup" << 'HOOK_EOF'
+#!/usr/bin/env bash
+# Trigger Omarchy dotfiles backup on desktop logon
+if [[ -x "$HOME/Projects/omarchy-dotfiles/auto-backup.sh" ]]; then
+    "$HOME/Projects/omarchy-dotfiles/auto-backup.sh" >/dev/null 2>&1 &
+elif [[ -x "$HOME/.local/share/omarchy-dotfiles/auto-backup.sh" ]]; then
+    "$HOME/.local/share/omarchy-dotfiles/auto-backup.sh" >/dev/null 2>&1 &
+fi
+HOOK_EOF
+            chmod +x "$HOME/.config/omarchy/hooks/post-boot.d/omarchy-dotfiles-backup"
+            cp -f "$HOME/.config/omarchy/hooks/post-boot.d/omarchy-dotfiles-backup" "$HOME/.config/omarchy/hooks/post-update.d/omarchy-dotfiles-backup"
+            chmod +x "$HOME/.config/omarchy/hooks/post-update.d/omarchy-dotfiles-backup"
+            log_info "Installed Omarchy post-boot (logon) and post-update backup automation hooks."
         fi
 
         # User Groups
@@ -403,7 +424,7 @@ if [[ "$ENABLE_SYSTEMD" == true ]]; then
         sudo usermod -aG video,input "$TARGET_USER" 2>/dev/null || true
         log_info "System services and group permissions updated for user $TARGET_USER."
     else
-        echo "    [Dry-run] Would enable bluetooth, cups, docker services, dotfiles backup timer and set user groups for $TARGET_USER"
+        echo "    [Dry-run] Would enable bluetooth, cups, docker services, dotfiles backup logon service & timer, install hooks and set user groups for $TARGET_USER"
     fi
 fi
 
