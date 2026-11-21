@@ -14,6 +14,9 @@
         },
         {
           "id": "nikhil.workspaces"
+        },
+        {
+          "id": "tornikegomareli.spaces"
         }
       ],
       "center": [
@@ -87,13 +90,16 @@
           "id": "omarchy.monitor"
         },
         {
-          "id": "omarchy.power",
+          "id": "io.github.timrudorf.bettery",
           "showPercentage": true
         }
       ],
       "centerBegin": [
         {
           "id": "omarchy.indicators"
+        },
+        {
+          "id": "io.github.ivanvan08.tick"
         }
       ],
       "centerEnd": [
@@ -141,6 +147,10 @@
     }
   ],
   "disabledPlugins": [
-    "omarchy.disk-speedtest"
+    "omarchy.disk-speedtest",
+    "omarchy.power"
+  ],
+  "cloneSourceRestores": [
+    "io.github.timrudorf.bettery"
   ]
 }
