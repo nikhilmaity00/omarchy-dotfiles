@@ -42,7 +42,6 @@ lazygit
 libvips
 linux-omarchy
 localsend
-lua51
 luarocks
 microsoft-edge-stable-bin
 mise-bin
@@ -80,6 +79,7 @@ udiskie
 ufw-docker
 usage
 vi
+vlc
 whois
 woff2-font-awesome
 wtype

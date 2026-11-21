@@ -42,7 +42,6 @@ lazygit 0.66.2-1
 libvips 8.18.7-1
 linux-omarchy 7.2.15-1
 localsend 1.18.2-1
-lua51 5.1.5-13
 luarocks 3.13.0-5
 microsoft-edge-stable-bin 158.0.4370.33-1
 mise-bin 2026.11.10-1
@@ -80,6 +79,7 @@ udiskie 2.7.0-2
 ufw-docker 251123-2
 usage 6.12.1-1
 vi 1:070224-9
+vlc 3.0.24-1
 whois 5.6.6-1
 woff2-font-awesome 7.3.1-1
 wtype 0.4-2
