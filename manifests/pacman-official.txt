@@ -83,7 +83,6 @@ vlc
 whois
 woff2-font-awesome
 wtype
-xdg-terminal-exec
 xorg-xsetroot
 yaru-icon-theme
 yay

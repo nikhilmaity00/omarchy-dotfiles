@@ -1,4 +1,5 @@
 agx.screen-time	https://github.com/ax1g/quickshell-screentime-plugin.git
+crmne.hyprmoncfg	https://github.com/crmne/omarchy-hyprmoncfg.git
 hancore.bongocat	https://github.com/HANCORE-linux/omarchy-bongocat.git
 io.github.ivanvan08.tick	https://github.com/ivanvan08/omarchy-tick.git
 io.github.timrudorf.bettery	https://github.com/TimRudorf/omarchy-bettery.git

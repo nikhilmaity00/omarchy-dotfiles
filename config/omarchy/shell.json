@@ -14,7 +14,7 @@
         },
         {
           "id": "tornikegomareli.spaces",
-          "showApps": "hover",
+          "showApps": "all",
           "hideEmpty": true
         }
       ],
@@ -90,7 +90,10 @@
           "id": "omarchy.network"
         },
         {
-          "id": "omarchy.monitor"
+          "id": "crmne.hyprmoncfg"
+        },
+        {
+          "id": "nikhil.monitor"
         },
         {
           "id": "io.github.timrudorf.bettery",
