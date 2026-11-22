@@ -1,34 +1,67 @@
 {
-  "version": 1,
-  "idle": {
-    "screensaver": 150,
-    "lock": 300
-  },
   "bar": {
-    "position": "top",
-    "transparent": true,
+    "background": "glassy",
     "layout": {
+      "center": [
+        {
+          "format": "dddd HH:mm",
+          "formatAlt": "d MMMM 'W'ww yyyy",
+          "id": "omarchy.clock",
+          "verticalFormat": "HH\n—\nmm"
+        }
+      ],
+      "centerBegin": [
+        {
+          "id": "omarchy.indicators"
+        }
+      ],
+      "centerEnd": [
+        {
+          "cities": [
+            {
+              "lat": 31.5,
+              "lon": 34.75,
+              "name": "Israel",
+              "region": "IL",
+              "zone": "Asia/Jerusalem"
+            },
+            {
+              "name": "Singapore",
+              "zone": "Asia/Singapore"
+            },
+            {
+              "name": "Jakarta",
+              "zone": "Asia/Jakarta"
+            }
+          ],
+          "id": "omarchy.elsewhen"
+        },
+        {
+          "id": "omarchy.weather"
+        },
+        {
+          "id": "omarchy.system-update"
+        }
+      ],
       "left": [
         {
           "id": "omarchy.menu"
         },
         {
+          "hideEmpty": true,
           "id": "tornikegomareli.spaces",
-          "showApps": "all",
-          "hideEmpty": true
-        }
-      ],
-      "center": [
-        {
-          "id": "omarchy.clock",
-          "format": "dddd HH:mm",
-          "formatAlt": "d MMMM 'W'ww yyyy",
-          "verticalFormat": "HH\n—\nmm"
+          "showApps": "all"
         }
       ],
       "right": [
         {
           "id": "omarchy.tray"
+        },
+        {
+          "id": "njpatel.omapager"
+        },
+        {
+          "id": "io.github.ivanvan08.tick"
         },
         {
           "id": "omarchy.keyboard-layout"
@@ -47,9 +80,9 @@
           "id": "jesseburlamaque.omarchy-find"
         },
         {
-          "id": "omaplug",
+          "autoCheckIntervalHours": 24,
           "autoCheckUpdates": true,
-          "autoCheckIntervalHours": 24
+          "id": "omaplug"
         },
         {
           "id": "jankeesvw.notification-center"
@@ -58,18 +91,18 @@
           "id": "io.github.twiking.omacontrol"
         },
         {
-          "id": "hancore.bongocat",
           "active": false,
+          "catWidth": 140,
+          "colorMode": "theme",
+          "customColor": "#f0abab",
+          "id": "hancore.bongocat",
+          "keyboardName": "",
+          "keypressDuration": 100,
+          "monitorName": "",
           "positionLocked": true,
           "positionX": 702,
           "positionY": 806,
-          "catWidth": 140,
-          "keypressDuration": 100,
-          "keyboardName": "",
-          "monitorName": "",
-          "workspaceId": 0,
-          "colorMode": "theme",
-          "customColor": "#f0abab"
+          "workspaceId": 0
         },
         {
           "id": "agx.screen-time"
@@ -96,48 +129,25 @@
           "id": "nikhil.monitor"
         },
         {
-          "id": "io.github.timrudorf.bettery",
+          "id": "omarchy.power",
+          "showPercentage": true
+        },
+        {
+          "id": "io.github.nipsen.dell-power",
           "showPercentage": true
         }
       ],
-      "centerBegin": [
-        {
-          "id": "omarchy.indicators"
-        },
-        {
-          "id": "io.github.ivanvan08.tick"
-        }
-      ],
-      "centerEnd": [
-        {
-          "id": "omarchy.elsewhen",
-          "cities": [
-            {
-              "name": "Israel",
-              "zone": "Asia/Jerusalem",
-              "lat": 31.5,
-              "lon": 34.75,
-              "region": "IL"
-            },
-            {
-              "name": "Singapore",
-              "zone": "Asia/Singapore"
-            },
-            {
-              "name": "Jakarta",
-              "zone": "Asia/Jakarta"
-            }
-          ]
-        },
-        {
-          "id": "omarchy.weather"
-        },
-        {
-          "id": "omarchy.system-update"
-        }
-      ],
       "tray": []
-    }
+    },
+    "position": "top"
+  },
+  "disabledPlugins": [
+    "omarchy.disk-speedtest",
+    "omarchy.notifications"
+  ],
+  "idle": {
+    "lock": 300,
+    "screensaver": 150
   },
   "plugins": [
     {
@@ -147,11 +157,5 @@
       "id": "turbinebmw.pip"
     }
   ],
-  "disabledPlugins": [
-    "omarchy.disk-speedtest",
-    "omarchy.power"
-  ],
-  "cloneSourceRestores": [
-    "io.github.timrudorf.bettery"
-  ]
+  "version": 1
 }

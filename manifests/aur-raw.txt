@@ -1,1 +1,2 @@
+ai-usagebar-bin 1.52.3-1
 hyprmoncfg-bin 1.30.0-1

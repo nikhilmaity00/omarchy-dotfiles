@@ -1,1 +1,2 @@
+ai-usagebar-bin
 hyprmoncfg-bin
