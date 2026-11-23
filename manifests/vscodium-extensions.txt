@@ -1,3 +1,4 @@
+catppuccin.catppuccin-vsc
 eamodio.gitlens
 hashicorp.terraform
 humao.rest-client
