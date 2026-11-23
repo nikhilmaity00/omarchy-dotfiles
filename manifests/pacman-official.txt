@@ -68,6 +68,7 @@ starship
 superwhisper-bin
 sushi
 system-config-printer
+terraform
 thermald
 tldr
 tobi-try
