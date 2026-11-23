@@ -91,18 +91,18 @@
           "id": "io.github.twiking.omacontrol"
         },
         {
-          "active": false,
-          "catWidth": 140,
-          "colorMode": "theme",
-          "customColor": "#f0abab",
           "id": "hancore.bongocat",
-          "keyboardName": "",
-          "keypressDuration": 100,
-          "monitorName": "",
+          "active": false,
           "positionLocked": true,
           "positionX": 702,
           "positionY": 806,
-          "workspaceId": 0
+          "catWidth": 164,
+          "keypressDuration": 100,
+          "keyboardName": "",
+          "monitorName": "",
+          "workspaceId": 0,
+          "colorMode": "theme",
+          "customColor": "#f0abab"
         },
         {
           "id": "agx.screen-time"
