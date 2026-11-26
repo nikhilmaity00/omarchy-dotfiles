@@ -63,6 +63,7 @@ pamixer
 pinta
 python-poetry-core
 ripgrep
+secrets
 signed
 starship
 superwhisper-bin
