@@ -58,6 +58,9 @@
           "id": "omarchy.tray"
         },
         {
+          "id": "liambeck99.update-center"
+        },
+        {
           "id": "njpatel.omapager"
         },
         {
@@ -139,7 +142,8 @@
   },
   "disabledPlugins": [
     "omarchy.disk-speedtest",
-    "omarchy.notifications"
+    "omarchy.notifications",
+    "omarchy.clipboard"
   ],
   "idle": {
     "lock": 300,
@@ -151,7 +155,13 @@
     },
     {
       "id": "turbinebmw.pip"
+    },
+    {
+      "id": "alanfortlink.clipboard"
     }
   ],
-  "version": 1
+  "version": 1,
+  "cloneSourceRestores": [
+    "alanfortlink.clipboard"
+  ]
 }

@@ -1,4 +1,5 @@
 agx.screen-time	https://github.com/ax1g/quickshell-screentime-plugin.git
+alanfortlink.clipboard	https://github.com/alanfortlink/clipboard-history.git
 crmne.hyprmoncfg	https://github.com/crmne/omarchy-hyprmoncfg.git
 hancore.bongocat	https://github.com/HANCORE-linux/omarchy-bongocat.git
 io.github.ivanvan08.tick	https://github.com/ivanvan08/omarchy-tick.git
@@ -8,6 +9,7 @@ io.github.twiking.omasettings	https://github.com/twiking/omasettings.git
 io.github.x3me.nexthop	https://github.com/x3me/omarchy-nexthop.git
 jankeesvw.notification-center	https://github.com/jankeesvw/omarchy-notification-center.git
 jesseburlamaque.omarchy-find	https://github.com/jesseburlamaque/omarchy-find.git
+liambeck99.update-center	https://github.com/liambeck99/omarchy-update-center.git
 mirador	https://github.com/sanjyay/Mirador.git
 njpatel.omapager	https://github.com/omacom/omapager.git
 omaconnect	https://github.com/jitendradara12/omaconnect.git
