@@ -64,15 +64,7 @@
           "id": "omarchy.keyboard-layout"
         },
         {
-          "autoCheckIntervalHours": 24,
-          "autoCheckUpdates": true,
-          "id": "omaplug"
-        },
-        {
           "id": "jankeesvw.notification-center"
-        },
-        {
-          "id": "agx.screen-time"
         },
         {
           "id": "omaconnect"
@@ -133,6 +125,14 @@
         },
         {
           "id": "io.github.twiking.omacontrol"
+        },
+        {
+          "id": "agx.screen-time"
+        },
+        {
+          "autoCheckIntervalHours": 24,
+          "autoCheckUpdates": true,
+          "id": "omaplug"
         },
         {
           "id": "jesseburlamaque.omarchy-find"
