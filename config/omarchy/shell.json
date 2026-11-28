@@ -97,20 +97,6 @@
           "id": "bt.codecs"
         },
         {
-          "id": "hancore.bongocat",
-          "active": false,
-          "positionLocked": true,
-          "positionX": 702,
-          "positionY": 806,
-          "catWidth": 164,
-          "keypressDuration": 100,
-          "keyboardName": "",
-          "monitorName": "",
-          "workspaceId": 0,
-          "colorMode": "theme",
-          "customColor": "#f0abab"
-        },
-        {
           "id": "io.github.x3me.nexthop",
           "updateCheck": false
         },

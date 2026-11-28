@@ -1,7 +1,6 @@
 agx.screen-time	https://github.com/ax1g/quickshell-screentime-plugin.git
 alanfortlink.clipboard	https://github.com/alanfortlink/clipboard-history.git
 crmne.hyprmoncfg	https://github.com/crmne/omarchy-hyprmoncfg.git
-hancore.bongocat	https://github.com/HANCORE-linux/omarchy-bongocat.git
 io.github.ivanvan08.tick	https://github.com/ivanvan08/omarchy-tick.git
 io.github.nipsen.dell-power	https://github.com/NIPSEN/omarchy-dell-power.git
 io.github.twiking.omacontrol	https://github.com/twiking/omacontrol.git
