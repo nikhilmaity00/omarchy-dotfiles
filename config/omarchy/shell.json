@@ -40,6 +40,10 @@
           "id": "omarchy.weather"
         },
         {
+          "id": "mghizdavet.rss",
+          "language": "English"
+        },
+        {
           "id": "omarchy.system-update"
         }
       ],

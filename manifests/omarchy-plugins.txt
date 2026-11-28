@@ -9,6 +9,7 @@ io.github.x3me.nexthop	https://github.com/x3me/omarchy-nexthop.git
 jankeesvw.notification-center	https://github.com/jankeesvw/omarchy-notification-center.git
 jesseburlamaque.omarchy-find	https://github.com/jesseburlamaque/omarchy-find.git
 liambeck99.update-center	https://github.com/liambeck99/omarchy-update-center.git
+mghizdavet.rss	https://github.com/MariusGhizdavet/omarchy-rss.git
 mirador	https://github.com/sanjyay/Mirador.git
 njpatel.omapager	https://github.com/omacom/omapager.git
 omaconnect	https://github.com/jitendradara12/omaconnect.git
